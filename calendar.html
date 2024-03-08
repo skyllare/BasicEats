@@ -24,7 +24,7 @@
             padding-top:15px;
         }
         .day {
-            color: gray;
+            color: rgb(105, 105, 105);
             flex-grow: 1;
             margin: 0px;
             padding: 0px;
@@ -32,37 +32,39 @@
             align-items: center;
         }
         .dayType {
+            font-weight: bold;
             border: 1px solid #ccc;
-            height:25px;
+            height:35px;
             background-color: white;
+            align-items:center;
+            display: grid;
         }
         .meal1 {
             border: 1px solid #ccc;
-            height:35px;
+            height:55px;
             align-items:center;
             display: grid;
-            background-color:#9ebf97;
+            background-color:#a7c7a1;
         }
         .meal2 {
             border: 1px solid #ccc;
-            height:35px;
+            height:55px;
             align-items:center;
             display: grid;            
-            background-color:#85a57f;
+            background-color:#91b08b;
         }
         .meal3 {
             border: 1px solid #ccc;
-            height:35px;
+            height:55px;
             align-items:center;
             display: grid;            
-            background-color:#6f9667;
+            background-color:#7ca175;
         }
         
         .col-5 {
             box-sizing: border-box;
         }
         .column {
-            display: flex;
             flex-wrap: wrap;
             width: 50%;
             padding: 10px;
@@ -71,6 +73,8 @@
         }
         .left {
             width: 70%;
+            text-align:center; 
+            justify-content: center;
         }
         .right {
             width: 30%;
@@ -128,69 +132,80 @@
             <p class="account">ACCOUNT</p>
         </div>
     </div>
-    <div class="container flexView">
-        <div class="row ">
+    <div class="container">
+        <div class="row " style="margin-top:0px; padding-top: 0px;">
             <!--CALENDAR:-->
-            <div class="left column col-7" style="background-color: #6f8c69;">
+            <div class="left column col-7" style="background-color: #6f8c69; margin-top:0px; ">
+                <h1>Weekly Meal Calendar</h1>
                 <div class="calendar">
                     <!--Sunday-->
                     <div class="day">
-                            <div class="dayType">Sunday</div>
-                            <div class="meal1">Meal 1</div>
-                            <div class="meal2">Meal 2</div>
-                            <div class="meal3">Meal 3</div>
+                            <div class="dayType"><u>Sunday</u></div>
+                            <div class="meal1">Apple</div>
+                            <div class="meal2">Spinach</div>
+                            <div class="meal3">Chicken</div>
                     </div>
                     <!--Monday-->
                     <div class="day">
-                        <div class="dayType">Monday</div>
-                        <div class="meal1">Meal 1</div>
-                        <div class="meal2">Meal 2</div>
-                        <div class="meal3">Meal 3</div>
+                        <div class="dayType"><u>Monday</u></div>
+                        <div class="meal1">Eggs</div>
+                        <div class="meal2">Tuna Salad</div>
+                        <div class="meal3">Spinach Wrap</div>
                     </div>
                     <!--Tuesday-->
                     <div class="day">
-                        <div class="dayType">Tuesday</div>
-                        <div class="meal1">Meal 1</div>
-                        <div class="meal2">Meal 2</div>
-                        <div class="meal3">Meal 3</div>
+                        <div class="dayType"><u>Tuesday</u></div>
+                        <div class="meal1">Omelet</div>
+                        <div class="meal2">Lasagna</div>
+                        <div class="meal3">Chicken Sandwich</div>
                     </div>
                     <!--Wednesday-->
                     <div class="day">
-                        <div class="dayType">Wednesday</div>
-                        <div class="meal1">Meal 1</div>
-                        <div class="meal2">Meal 2</div>
-                        <div class="meal3">Meal 3</div>
+                        <div class="dayType"><u>Wednesday</u></div>
+                        <div class="meal1">Breakfast Burrito</div>
+                        <div class="meal2">Caesar Salad</div>
+                        <div class="meal3">Rice with Greens</div>
                     </div>
                     <!--Thursday-->
                     <div class="day">
-                        <div class="dayType">Thursday</div>
-                        <div class="meal1">Meal 1</div>
-                        <div class="meal2">Meal 2</div>
-                        <div class="meal3">Meal 3</div>
+                        <div class="dayType"><u>Thursday</u></div>
+                        <div class="meal1">Potatoes</div>
+                        <div class="meal2">BBQ Chicken</div>
+                        <div class="meal3">Greek Yogurt</div>
                     </div>
                     <!--Friday-->
                     <div class="day">
-                        <div class="dayType">Friday</div>
-                        <div class="meal1">Meal 1</div>
-                        <div class="meal2">Meal 2</div>
-                        <div class="meal3">Meal 3</div>
+                        <div class="dayType"><u>Friday</u></div>
+                        <div class="meal1">Breakfast Tacos</div>
+                        <div class="meal2">Chicken Caesar Wrap</div>
+                        <div class="meal3">Lemon Salmon</div>
                     </div>
                     <!--Saturday-->
                     <div class="day">
-                        <div class="dayType">Saturday</div>
-                        <div class="meal1">Meal 1</div>
-                        <div class="meal2">Meal 2</div>
-                        <div class="meal3">Meal 3</div>
+                        <div class="dayType"><u>Saturday</u></div>
+                        <div class="meal1">Granola</div>
+                        <div class="meal2">Mushroom Soup</div>
+                        <div class="meal3">Chicken Pot Pie</div>
                     </div>
                 </div>
             </div>
             <!--MEAL GENERATOR-->
-            <div class="right col-4 column" style="background-color: #dddddd; display: block">
+            <div class="right col-4 column" style="background-color: #dddddd; display: block;">
                 <!--Text with button-->
                 <div style="display:inline; width: 100%;">
                     <h2>Meal Generator</h2>
+                    
                     <p>Click the button below to generate weekly meals:</p>
+                    <form action="/submit" method="post">
+                        <select id="dropdown" name="dropdown">
+                          <option value="option1">Regular</option>
+                          <option value="option2">Vegetarian</option>
+                          <option value="option3">Vegan</option>
+                        </select>
+                        <br><br>
+                      </form>
                     <button>Generate Meals</button>
+                    
                 </div>
                 <!--MealContainer classes-->
                 <!--Breakfast-->
@@ -201,8 +216,10 @@
                         <image class="smallImg" src="images/foodImageHolder.jpg" style="display:inline"></image>
                         <p style="display:inline">Eggs</p>
                     </div>
-                    <div class="col-4" style="display:inline; width: 70%; "><p>Nutritional information...</p></div>
-                </div>
+                    <div class="col-4" style="display:inline; width: 70%; ">
+                        <p style="display:inline;">1 servings | </p>
+                        <p style="display:inline;">Ingredients: Eggs</p>
+                    </div>                </div>
                 <!--Lunch-->
                 <div class="mealContainer" style="">
                     <div class="mealType" style="">
@@ -211,8 +228,10 @@
                         <image class="smallImg" src="images/foodImageHolder.jpg" style="display:inline"></image>
                         <p style="display:inline">Meat</p>
                     </div>
-                    <div class="col-4" style="display:inline; width: 70%; "><p>Nutritional information...</p></div>
-                </div>
+                    <div class="col-4" style="display:inline; width: 70%; ">
+                        <p style="display:inline;">1 servings | </p>
+                        <p style="display:inline;">Ingredients: Chicken</p>
+                    </div>                </div>
                 <!--Dinner-->
                 <div class="mealContainer" style="">
                     <div class="mealType" style="">
@@ -221,7 +240,10 @@
                         <image class="smallImg" src="images/foodImageHolder.jpg" style="display:inline"></image>
                         <p style="display:inline">Curry</p>
                     </div>
-                    <div class="col-4" style="display:inline; width: 70%; "><p>Nutritional information...</p></div>
+                    <div class="col-4" style="display:inline; width: 70%; ">
+                        <p style="display:inline;">2 servings | </p>
+                        <p style="display:inline;">Ingredients: Chicken, curry</p>
+                    </div>
                 </div>
             </div>
         </div>
