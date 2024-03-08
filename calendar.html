@@ -14,15 +14,15 @@
         .calendar {
             color: gray;
             display: grid;
-            background:#6f8c69;
+            background: #6f8c69;
             margin: 0px;
             grid-template-columns: repeat(7, 1fr);
             text-align: center;
-            margin: 0px;
             padding: 0px;
             width: 100%;
-            padding-top:15px;
+            padding-top: 15px;
         }
+
         .day {
             color: rgb(105, 105, 105);
             flex-grow: 1;
@@ -31,39 +31,44 @@
             width: 100%;
             align-items: center;
         }
+
         .dayType {
             font-weight: bold;
             border: 1px solid #ccc;
-            height:35px;
+            height: 35px;
             background-color: white;
-            align-items:center;
+            align-items: center;
             display: grid;
         }
+
         .meal1 {
             border: 1px solid #ccc;
-            height:55px;
-            align-items:center;
+            height: 55px;
+            align-items: center;
             display: grid;
-            background-color:#a7c7a1;
+            background-color: #a7c7a1;
         }
+
         .meal2 {
             border: 1px solid #ccc;
-            height:55px;
-            align-items:center;
-            display: grid;            
-            background-color:#91b08b;
+            height: 55px;
+            align-items: center;
+            display: grid;
+            background-color: #91b08b;
         }
+
         .meal3 {
             border: 1px solid #ccc;
-            height:55px;
-            align-items:center;
-            display: grid;            
-            background-color:#7ca175;
+            height: 55px;
+            align-items: center;
+            display: grid;
+            background-color: #7ca175;
         }
-        
+
         .col-5 {
             box-sizing: border-box;
         }
+
         .column {
             flex-wrap: wrap;
             width: 50%;
@@ -71,19 +76,23 @@
             box-sizing: border-box;
             text-align: center;
         }
+
         .left {
             width: 70%;
-            text-align:center; 
+            text-align: center;
             justify-content: center;
         }
+
         .right {
             width: 30%;
         }
+
         @media (max-width: 1000px) {
             .column {
                 width: 100%;
             }
         }
+
         button {
             padding: 10px 20px;
             font-size: 16px;
@@ -94,25 +103,28 @@
             border-radius: 20px;
             border: none;
         }
-        .smallImg{
+
+        .smallImg {
             width: 35px;
             height: 35px;
         }
+
         .mealContainer {
-            display:flex; 
-            flex: 1; 
-            border: 1px solid #ccc; 
-            margin: 0px; 
-            padding: 0px; 
+            display: flex;
+            flex: 1;
+            border: 1px solid #ccc;
+            margin: 0px;
+            padding: 0px;
             align-items: center;
         }
+
         .mealType {
-            display:inline; 
-            text-align: left; 
-            width: 30%; 
-            height: 75px; 
-            border: 1px solid #ccc; 
-            margin: 0px; 
+            display: inline;
+            text-align: left;
+            width: 30%;
+            height: 75px;
+            border: 1px solid #ccc;
+            margin: 0px;
             padding: 0px;
             padding-left: 20px;
         }
@@ -123,27 +135,27 @@
     <!--NAVBAR:-->
     <div class="nav-bar">
         <img class="logo" src="images/logo.png" alt="" />
-        <p class = "login"> LOG IN/ SIGN UP</p>
+        <a href="login.html" class="login"> LOG IN/ SIGN UP</a>
         <div class="top-bar">
-            <p class="meal">MEAL</p>
-            <p class="ingredient">INGREDIENT</p>
-            <p class="meal-plan">MEAL-PLAN</p>
-            <p class="about-us">ABOUT US</p>
-            <p class="account">ACCOUNT</p>
+            <a href="recipe.html" class="meal">MEAL</a>
+            <a href="recipe-search.html" class="ingredient">INGREDIENT</a>
+            <a href="calendar.html" class="meal-plan">MEAL-PLAN</a>
+            <a href="aboutus.html" class="about-us">ABOUT US</a>
+            <a href="view-users.html" class="account">ACCOUNT</a>
         </div>
     </div>
     <div class="container">
-        <div class="row " style="margin-top:0px; padding-top: 0px;">
+        <div class="row " style="margin-top:5%; padding-top: 0px;">
             <!--CALENDAR:-->
             <div class="left column col-7" style="background-color: #6f8c69; margin-top:0px; ">
                 <h1>Weekly Meal Calendar</h1>
                 <div class="calendar">
                     <!--Sunday-->
                     <div class="day">
-                            <div class="dayType"><u>Sunday</u></div>
-                            <div class="meal1">Apple</div>
-                            <div class="meal2">Spinach</div>
-                            <div class="meal3">Chicken</div>
+                        <div class="dayType"><u>Sunday</u></div>
+                        <div class="meal1">Apple</div>
+                        <div class="meal2">Spinach</div>
+                        <div class="meal3">Chicken</div>
                     </div>
                     <!--Monday-->
                     <div class="day">
@@ -194,18 +206,18 @@
                 <!--Text with button-->
                 <div style="display:inline; width: 100%;">
                     <h2>Meal Generator</h2>
-                    
+
                     <p>Click the button below to generate weekly meals:</p>
                     <form action="/submit" method="post">
                         <select id="dropdown" name="dropdown">
-                          <option value="option1">Regular</option>
-                          <option value="option2">Vegetarian</option>
-                          <option value="option3">Vegan</option>
+                            <option value="option1">Regular</option>
+                            <option value="option2">Vegetarian</option>
+                            <option value="option3">Vegan</option>
                         </select>
                         <br><br>
-                      </form>
+                    </form>
                     <button>Generate Meals</button>
-                    
+
                 </div>
                 <!--MealContainer classes-->
                 <!--Breakfast-->
@@ -219,7 +231,8 @@
                     <div class="col-4" style="display:inline; width: 70%; ">
                         <p style="display:inline;">1 servings | </p>
                         <p style="display:inline;">Ingredients: Eggs</p>
-                    </div>                </div>
+                    </div>
+                </div>
                 <!--Lunch-->
                 <div class="mealContainer" style="">
                     <div class="mealType" style="">
@@ -231,7 +244,8 @@
                     <div class="col-4" style="display:inline; width: 70%; ">
                         <p style="display:inline;">1 servings | </p>
                         <p style="display:inline;">Ingredients: Chicken</p>
-                    </div>                </div>
+                    </div>
+                </div>
                 <!--Dinner-->
                 <div class="mealContainer" style="">
                     <div class="mealType" style="">
