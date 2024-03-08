@@ -1,0 +1,177 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+.top-bar {
+    background-color: white;
+    box-shadow: 0 4px 2px -2px rgb(208, 207, 207);
+}
+
+.logo {
+    width: 20%;
+    margin-left: 2%;
+    margin-top: 2%;
+    display: inline-block;
+}
+
+.login {
+    float: right;
+    margin-right: 4%;
+    margin-top: 3%;
+}
+
+.meal,
+.ingredient,
+.meal-plan,
+.about-us {
+    color: black;
+    font-size: 16px;
+    margin-top: 1%;
+    margin-left: 4%;
+    margin-right: 4%;
+    display: inline-block;
+}
+
+.account {
+    float: right;
+    margin-right: 4%;
+    margin-top: 1%;
+}
+
+.title {
+    margin-top: 5%;
+}
+
+.page {
+    display: flex;
+    margin-left: 8%;
+    margin-right: 5%;
+}
+
+.recipe-img img {
+    width: 100%;
+    height: auto;
+}
+
+.recipe-content {
+    margin-left: 4%;
+}
+
+.recipe-title {
+    font-weight: bold;
+    font-size: 60px;
+    color: #6f8c69;
+}
+
+.recipe-metadata {
+    font-size: 25px;
+}
+
+.recipe-desc {
+    margin-right: 25%;
+    font-size: 30px;
+}
+
+i {
+    display: block;
+}
+
+.recipe-save {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px 6px 12px;
+    border-radius: 4px;
+    border: 3px solid #6f8c69;
+    color: #6f8c69;
+    background: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+button {
+    margin-top: 30px;
+}
+
+.recipe-print {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px 6px 12px;
+    border-radius: 4px;
+    border: 3px solid #6f8c69;
+    color: #6f8c69;
+    background: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 25px;
+    margin-left: 40px;
+}
+
+svg {
+    margin-right: 6px;
+}
+
+.card {
+    box-shadow: 0 2px 6px #6f8c69;
+    transition: 0.2s;
+    width: 30%;
+    margin-left: 33%;
+    margin-right: 40%;
+    margin-top: 2%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.card h3 {
+    font-weight: bold;
+}
+
+.ingredients {
+    margin-left: 7%;
+    margin-top: 3%;
+    font-size: 25px;
+}
+
+.ingredients h3 {
+    font-weight: bold;
+    color: #6f8c69;
+}
+
+li::marker {
+    color: #6f8c69;
+}
+
+.recipe-steps {
+    margin-left: 7%;
+    margin-top: 3%;
+    font-size: 25px;
+}
+
+.recipe-steps h3 {
+    font-weight: bold;
+    color: #6f8c69;
+}
+
+li {
+    padding-left: 10px;
+    padding-bottom: 8px;
+}
+
+.nutrition {
+    margin-left: 7%;
+    margin-top: 3%;
+    font-size: 25px;
+}
+
+.nutrition h3 {
+    font-weight: bold;
+    color: #6f8c69;
+}
+
+.nutrition p {
+    margin-right: 28%;
+}
