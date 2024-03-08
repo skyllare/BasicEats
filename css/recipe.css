@@ -145,6 +145,14 @@ li::marker {
     color: #6f8c69;
 }
 
+.results{
+    margin-left:4%;
+}
+
+.col-5:nth-child(2) {
+    margin-left: 7%;
+}
+
 .recipe-steps {
     margin-left: 7%;
     margin-top: 3%;
