@@ -10,6 +10,48 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
+router.get('/login', function(req, res, next) {
+  if(req.query.msg){
+    res.locals.msg = req.query.msg
+  }
+  res.render('login');
+});
+
+router.get('/calendar', function(req, res, next) {
+  if(req.query.msg){
+    res.locals.msg = req.query.msg
+  }
+  res.render('login');
+});
+
+router.get('/aboutus', function(req, res, next) {
+  if(req.query.msg){
+    res.locals.msg = req.query.msg
+  }
+  res.render('login');
+});
+
+router.get('/recipe-search', function(req, res, next) {
+  if(req.query.msg){
+    res.locals.msg = req.query.msg
+  }
+  res.render('login');
+});
+
+router.get('/recipe', function(req, res, next) {
+  if(req.query.msg){
+    res.locals.msg = req.query.msg
+  }
+  res.render('login');
+});
+
+router.get('/view-user', function(req, res, next) {
+  if(req.query.msg){
+    res.locals.msg = req.query.msg
+  }
+  res.render('login');
+});
+
 router.post('/login', async function(req, res, next) {
   //console.log(req.body.username+" - "+req.body.password);
   const user = await User.findUser(req.body.username, req.body.password)

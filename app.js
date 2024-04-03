@@ -32,6 +32,17 @@ app.use(session({
 
 app.use('/', indexRouter);
 
+app.use('/login', indexRouter);
+
+app.use('/aboutus', indexRouter);
+app.use('/calendar', indexRouter);
+app.use('/index', indexRouter);
+app.use('/recipe-search', indexRouter);
+app.use('/recipe', indexRouter);
+app.use('/view-users', indexRouter);
+
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
