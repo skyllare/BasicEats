@@ -1,0 +1,37 @@
+.saved-recipes {
+    margin-left: 5%;
+}
+
+.saved-recipes-table td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    padding-right: 400px;
+    font-size: 25px;
+}
+
+.saved-recipes-table tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.saved-recipes-table td:hover {
+    color: #6f8c69;
+}
+
+.username-password {
+    margin-left: -20%;
+}
+
+.username-password-table td,
+th {
+    font-size: 25px;
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    padding-right: 50px;
+}
+
+.username-password th {
+    background-color: #dddddd;
+}
