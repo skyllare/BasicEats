@@ -17,6 +17,13 @@ router.get('/login', function(req, res, next) {
   res.render('login');
 });
 
+router.get('/signup', function(req, res, next) {
+  if(req.query.msg){
+    res.locals.msg = req.query.msg
+  }
+  res.render('signup');
+});
+
 router.get('/calendar', function(req, res, next) {
   if(req.query.msg){
     res.locals.msg = req.query.msg
@@ -68,6 +75,35 @@ router.post('/login', async function(req, res, next) {
     res.render('login');
   }
 });
+
+router.post('/create', async function(req, res, next) {
+  try {
+    await User.create(
+      {
+        username: req.body.username,
+        password: req.body.password
+      }
+  )
+  res.redirect("/");
+  console.log("user created");
+  } catch (error) {
+    console.log("user could not be created");
+    // res.redirect("/login");
+    res.locals.msg = "fail";
+    res.render('signup');  
+  }
+});
+
+// router.post('/create', async (req, res) => {
+//   try {
+//     const { username, password } = req.body;
+//     const newComment = await User.create({ username, password });
+//     res.redirect("/")
+//   } catch (error) {
+//     console.error('Error adding comment:', error);
+//     res.status(500).send('Internal Server Error');
+//   }
+// });
 
 router.get('/logout', function(req,res, next){
   if(req.session.user){

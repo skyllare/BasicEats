@@ -333,8 +333,8 @@ input[type="password"]:placeholder, input[type=text]:placeholder {
     </div>
     <!--LOG IN FORM:-->
     <div class="container">
-        <h2>Log In</h2>
-        <form action="/login" method="post">
+        <h2>Sign Up</h2>
+        <form action="/create" method="post">
             <div class="input-group">
                 <label for="username">Username</label>
                 <input type="text" id="login" name="username" placeholder="username" required>
@@ -346,13 +346,13 @@ input[type="password"]:placeholder, input[type=text]:placeholder {
             <div class="input-group">
                 <input type="submit" value="Log In">
             </div>
-            <a href="signup" style="display: flex; justify-content: center; text-align:center">Sign Up</a>
+            <a href="login" style="display: flex; justify-content: center; text-align:center">Log In</a>
         </form>
         <% if(locals.msg && msg==="fail") { %>
             <p>Debug: Message should display</p>
             <div class="alert alert-danger" role="alert">
                 error
-              <p class="">username and/or password did not match. Try again.</p>
+              <p class="">Username already taken. Choose a unique username.</p>
             </div>
         <% } %>
     </div>

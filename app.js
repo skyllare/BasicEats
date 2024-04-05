@@ -40,6 +40,7 @@ app.use('/index', indexRouter);
 app.use('/recipe-search', indexRouter);
 app.use('/recipe', indexRouter);
 app.use('/view-users', indexRouter);
+app.use('/signup', indexRouter);
 
 
 
