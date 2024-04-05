@@ -52,11 +52,11 @@ router.get('/recipe', function(req, res, next) {
   res.render('recipe');
 });
 
-router.get('/view-user', function(req, res, next) {
+router.get('/view-users', function(req, res, next) {
   if(req.query.msg){
     res.locals.msg = req.query.msg
   }
-  res.render('view-user');
+  res.render('view-users');
 });
 
 router.post('/login', async function(req, res, next) {
