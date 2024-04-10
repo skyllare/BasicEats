@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('cms:server');
+var debug = require('debug')('csm-489:server');
 var http = require('http');
 
 /**
