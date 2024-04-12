@@ -51,7 +51,7 @@ p {
     float: right;
     font-size: 16px;
     margin-right: 4%;
-    margin-top: 2.5%;
+    margin-top: 2.3%;
 }
 
 
@@ -60,26 +60,31 @@ p {
     margin-top: 4%;
 }
 
-.result-1,
-.result-2,
-.result-3,
-.result-4 {
-    margin-top: 15%;
-    width: 70%;
-    display: inline-block;
+.results-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
 }
 
-.results {
-    margin-left: 4%;
+.result-item {
+    width: calc(50% - 10px); /* Two columns with a bit of space in between */
+    margin-bottom: 20px;
 }
 
-.col-5:nth-child(2) {
-    margin-left: 7%;
+.result-container {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
 }
 
-.result-text {
-    display: inline-block;
-    margin-left: 2%;
+.result-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.result-title {
     font-size: 25px;
     color: #6f8c69;
 }

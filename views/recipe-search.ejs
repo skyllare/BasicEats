@@ -44,26 +44,21 @@
         </div>
     </div>
     <h1 class="filter-text">
-        <h1>Search Results for "<%= searchValue %>"</h1>
-        <div class="results">
-            <ul>
-                <div class="row">
-                    <% searchData.results.forEach((result, index) => { %>
-                        <div class="col-5">
-                            <img class="<%= index % 2 === 0 ? 'result-even' : 'result-odd' %>" src="<%= result.image %>" alt="" />
-                            <p class="result-text"><%= result.title %></p>
-                        </div>
-                        <% if (index % 2 !== 0) { %>
-                            </div><div class="row">
-                        <% } %>
-
-                </div>
-                
+        Search Results for "<%= searchValue %>"
+    </h1>
+    <div class="results">
+        <ul class="results-list">
+            <% searchData.results.forEach((result, index) => { %>
+                <li class="result-item">
+                    <div class="result-container">
+                        <img src="<%= result.image || 'public/images/foodImageHolder.jpg' %>" alt="<%= result.title %>" class="result-image" />
+                        <p class="result-title"><%= result.title %></p>
                     </div>
-                <% }) %>
-                
-                
-            </ul>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+    
 </body>
 
 <!-- search_results.ejs

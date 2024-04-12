@@ -49,8 +49,9 @@ p {
     text-decoration: none;
     color: black;
     float: right;
+    font-size: 16px;
     margin-right: 4%;
-    margin-top: 1%;
+    margin-top: 2.3%;
 }
 
 .users {
