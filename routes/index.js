@@ -1,3 +1,5 @@
+const { MY_API_KEY } = require('./config');
+
 var express = require('express');
 const User = require('../models/User');
 var router = express.Router();
@@ -107,5 +109,21 @@ router.get('/logout', function(req,res, next){
   }
   
 })
+
+router.get('/search_recipes', async function(req, res) {
+  const searchValue = req.query.searchValue;
+  console.log(searchValue);
+  const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${MY_API_KEY}&query=${searchValue}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    res.send(data);
+    // console.log(data)
+  } catch (err) {
+    res.status(500).send("Error fetching data from API");
+  }
+});
+
 
 module.exports = router;
