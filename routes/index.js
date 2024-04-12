@@ -2,6 +2,7 @@ var express = require('express');
 const User = require('../models/User');
 var router = express.Router();
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   if(req.query.msg){
@@ -24,12 +25,7 @@ router.get('/signup', function(req, res, next) {
   res.render('signup');
 });
 
-router.get('/calendar', function(req, res, next) {
-  if(req.query.msg){
-    res.locals.msg = req.query.msg
-  }
-  res.render('calendar');
-});
+
 
 router.get('/aboutus', function(req, res, next) {
   if(req.query.msg){
@@ -51,6 +47,9 @@ router.get('/recipe', function(req, res, next) {
   }
   res.render('recipe');
 });
+
+
+
 
 router.get('/view-users', function(req, res, next) {
   if(req.query.msg){
@@ -94,16 +93,10 @@ router.post('/create', async function(req, res, next) {
   }
 });
 
-// router.post('/create', async (req, res) => {
-//   try {
-//     const { username, password } = req.body;
-//     const newComment = await User.create({ username, password });
-//     res.redirect("/")
-//   } catch (error) {
-//     console.error('Error adding comment:', error);
-//     res.status(500).send('Internal Server Error');
-//   }
-// });
+
+
+
+
 
 router.get('/logout', function(req,res, next){
   if(req.session.user){

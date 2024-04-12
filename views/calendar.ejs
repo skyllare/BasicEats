@@ -10,6 +10,19 @@
     <link rel="stylesheet" href="css/index.css" />
     <!-- <script src="petition.js"></script> -->
     <title>Basic Eats</title>
+    <script>
+        function displayMeal(day, mealNumber) {
+            fetch(`/meal/${day}/${mealNumber}`)
+                .then(response => response.text())
+                .then(meal => {
+                    document.getElementById('mealDisplay').innerHTML = meal;
+                })
+                .catch(error => {
+                    console.error('Error fetching meal:', error);
+                });
+        }
+    </script>
+    </script>
     <style>
         .calendar {
             color: gray;
@@ -24,42 +37,51 @@
             padding-top:15px;
         }
         .day {
-            color: rgb(105, 105, 105);
             flex-grow: 1;
             margin: 0px;
             padding: 0px;
             width: 100%;
             align-items: center;
             cursor: pointer;
+            border: none;
         }
         .dayType {
+            color: rgb(105, 105, 105);
             font-weight: bold;
             border: 1px solid #ccc;
             height:35px;
             background-color: white;
             align-items:center;
             display: grid;
+            width: 100%;
+            
         }
         .meal1 {
+            color: rgb(105, 105, 105);
             border: 1px solid #ccc;
             height:55px;
             align-items:center;
             display: grid;
             background-color:#a7c7a1;
+            width: 100%;
         }
         .meal2 {
+            color: rgb(105, 105, 105);
             border: 1px solid #ccc;
             height:55px;
             align-items:center;
             display: grid;            
             background-color:#91b08b;
+            width: 100%;
         }
         .meal3 {
+            color: rgb(105, 105, 105);
             border: 1px solid #ccc;
             height:55px;
             align-items:center;
             display: grid;            
             background-color:#7ca175;
+            width: 100%;
         }
         
         .col-5 {
@@ -85,7 +107,7 @@
                 width: 100%;
             }
         }
-        button {
+        .generate {
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
@@ -136,6 +158,7 @@
             <a href="/view-users" class="account">ACCOUNT</a>
         </div>
     </div>
+
     <div class="container">
         <div class="row " style="margin-top:0px; padding-top: 0px;">
             <!--CALENDAR:-->
@@ -144,22 +167,62 @@
                 <div class="calendar">
                     <!--Sunday-->
                     <div class="day">
-                            <div class="dayType"><u>Sunday</u></div>
-                            <div class="meal1">Apple</div>
-                            <div class="meal2">Spinach</div>
-                            <div class="meal3">Chicken</div>
+                            <button onclick="displayMeal('Sunday', 1)" class="dayType"><u>Sunday</u></button>
+                            <button class="meal1">
+                                <% if (mealsByDay['Sunday'][1].length > 0) { %>
+                                    <%= mealsByDay['Sunday'][1][0].name %>
+                            <% } else { %>
+                                no meals
+                            <% } %>
+                            </button>
+                            <button class="meal2">
+                                    <% if (mealsByDay['Sunday'][2].length > 0) { %>
+                                        <%= mealsByDay['Sunday'][2][0].name %>
+                                    <% } else { %>
+                                        no meals
+                                    <% } %>
+                            </button>
+                            
+                            <button class="meal3">
+                                <% if (mealsByDay['Sunday'][3].length > 0) { %>
+                                    <%= mealsByDay['Sunday'][3][0].name %>
+                                <% } else { %>
+                                    no meals
+                                <% } %>
+                            </button>
+                            
                     </div>
                     <!--Monday-->
                     <div class="day">
-                        <div class="dayType"><u>Monday</u></div>
-                        <div class="meal1">Eggs</div>
-                        <div class="meal2">Tuna Salad</div>
-                        <div class="meal3">Spinach Wrap</div>
+                        <button class="dayType"><u>Monday</u></button>
+                        <button class="meal1">
+                            <% if (mealsByDay['Monday'][1].length > 0) { %>
+                                <%= mealsByDay['Monday'][1][0].name %>
+                            <% } else { %>
+                                no meals
+                            <% } %>
+                        </button>
+                        <button class="meal2">
+                            <% if (mealsByDay['Monday'][2].length > 0) { %>
+                                <%= mealsByDay['Monday'][2][0].name %>
+                            <% } else { %>
+                                no meals
+                            <% } %>
+                        </button>
+                        <button class="meal3">
+                            <% if (mealsByDay['Monday'][3].length > 0) { %>
+                                <%= mealsByDay['Monday'][3][0].name %>
+                            <% } else { %>
+                                no meals
+                            <% } %>
+                        </button>
                     </div>
                     <!--Tuesday-->
                     <div class="day">
                         <div class="dayType"><u>Tuesday</u></div>
-                        <div class="meal1">Omelet</div>
+                        <div class="meal1">
+                            Sandwich
+                        </div>
                         <div class="meal2">Lasagna</div>
                         <div class="meal3">Chicken Sandwich</div>
                     </div>
@@ -208,11 +271,12 @@
                         </select>
                         <br><br>
                       </form>
-                    <button>Generate Meals</button>
+                    <button class="generate">Generate Meals</button>
                     <p style="padding-top:15px">Selected Day: <u>Sunday</u></p>
                 </div>
                 <!--MealContainer classes-->
                 <!--Breakfast-->
+                <div id="mealDisplay"></div>
                 <div class="mealContainer" style="margin-top:10px">
                     <div class="mealType" style="">
                         <p style="display:inline">Breakfast</p>

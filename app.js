@@ -6,9 +6,11 @@ var logger = require('morgan');
 const session = require('express-session')
 const sequelize = require('./db')
 const User = require('./models/User')
+const MealPlan = require('./models/MealPlan')
 
 
 var indexRouter = require('./routes/index');
+var calendarRouter = require('./routes/calendar');
 
 var app = express();
 
@@ -34,13 +36,14 @@ app.use('/', indexRouter);
 
 app.use('/login', indexRouter);
 
+
 app.use('/aboutus', indexRouter);
-app.use('/calendar', indexRouter);
 app.use('/index', indexRouter);
 app.use('/recipe-search', indexRouter);
 app.use('/recipe', indexRouter);
 app.use('/view-users', indexRouter);
 app.use('/signup', indexRouter);
+app.use('/calendar', calendarRouter);
 
 
 
@@ -56,6 +59,11 @@ app.use(function(req, res, next) {
 
 async function setup() {
   const subu = await User.create({ username: "subu", password: "1234" });
+const meals = await MealPlan.bulkCreate([
+            { username: 'caitlin', day: '2024-04-11', weekday:'Sunday', mealNum: 1, name: "eggs" },
+            { username: 'd', day: '2024-04-12', weekday:'Monday', mealNum: 1, name: "friday" }
+]);
+
   console.log("subu instance created...")
 }
 
