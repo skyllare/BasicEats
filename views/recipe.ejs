@@ -16,7 +16,7 @@
 <body>
     <div class="nav-bar">
         <a href="/">
-            <img class="logo" src="images/logo.png" alt="" href="/index"/>
+            <img class="logo" src="images/logo.png" alt="" href="/index" />
         </a>
         <a href="/login" class="login">LOG IN/ SIGN UP</a>
         <div class="top-bar">
@@ -29,8 +29,8 @@
                     <div class="row">
                         <div id="custom-search-input">
                             <div class="input-group col-md-12">
-                                <input type="text" id="searchValue" name="searchValue" class=" search-query form-control"
-                                    placeholder="Search Recipes..." />
+                                <input type="text" id="searchValue" name="searchValue"
+                                    class=" search-query form-control" placeholder="Search Recipes..." />
                                 <span class="input-group-btn">
                                     <button class="btn btn-danger" type="submit">
                                         <span class=" glyphicon glyphicon-search"></span>
@@ -47,17 +47,14 @@
     <div class="title">
         <div class="page">
             <div class="recipe-img">
-                <img src="images/greek salad.jpg" alt="Greek salad">
+                <img src="<%= data.image %>" alt="<%= data.title %>">
             </div>
             <div class="recipe-content">
-                <h1 class="recipe-title">Greek Salad</h1>
-                <p class="recipe-metadata">
-                    <span class="recipe-rating">★★★★<span>☆</span></span>
-                    <span class="recipe-votes">(12 votes)</span>
-                </p>
+                <h1 class="recipe-title">
+                    <%= data.title %>
+                </h1>
 
-                <p class="recipe-desc">This Greek salad recipe is incredibly good! It's nice and tangy and tastes even
-                    better in the summer when tomatoes and cucumbers are at their best.</p>
+                <p class="recipe-desc"><%- data.summary %></p>
 
 
                 <button class="recipe-save" type="button">
@@ -83,17 +80,21 @@
     <div class="row">
         <div class="card">
             <div class="row">
-                <div class="col prep">
-                    <h3>Prep Time:</h3>
-                    <h4>20 mins</h4>
-                </div>
                 <div class="col total">
                     <h3>Total Time:</h3>
-                    <h4>20 mins</h4>
+                    <h4>
+                        <%= data.readyInMinutes %> min
+                    </h4>
+                </div>
+                <div class="col total">
+                    <h3>Servings:</h3>
+                    <h4>
+                        <%= data.servings %>
+                    </h4>
+
                 </div>
             </div>
-            <h3>Servings:</h3>
-            <h4>6</h4>
+
         </div>
     </div>
 
@@ -101,41 +102,27 @@
         <div class="ingredients">
             <h3>Ingredients</h3>
             <ul>
-                <li>1 head romaine lettuce- rinsed, dried and chopped</li>
-                <li>1 cucumber, sliced</li>
-                <li>2 large tomatoes, chopped</li>
-                <li>1 (6 ounce) can pitted black olives</li>
-                <li>1 green bell pepper, chopped</li>
-                <li>1 red bell pepper, chopped</li>
-                <li>1 red onion, thinly sliced</li>
-                <li>1 cup crumbled feta cheese</li>
-                <li>6 tablespoons olive oil</li>
-                <li>1 lemon, juiced</li>
-                <li>1 teaspoon dried oregano</li>
-                <li>ground black pepper to taste</li>
+                <% data.extendedIngredients.forEach((ingredient)=> { %>
+                    <li>
+                        <%= ingredient.amount %>
+                            <%= ingredient.unit %>
+                                <%= ingredient.name %>
+                    </li>
+
+                    <% }) %>
             </ul>
         </div>
     </div>
 
     <div class="row">
-        <div class="recipe-steps">
-            <h3>Directions</h3>
-            <ol>
-                <li>Combine romaine, cucumber, tomatoes, olives, bell peppers, and red onion in a large bowl; sprinkle
-                    with feta cheese.</li>
-                <li>Whisk olive oil, lemon juice, oregano, and black pepper together in a small bowl. Pour dressing over
-                    salad, toss well to combine, and serve.</li>
-                <li>Pour dressing over salad, toss well to combine, and serve.</li>
-            </ol>
+        <div class="col-10">
+            <div class="recipe-steps">
+                <h3>Directions</h3>
+                <ol>
+                    <%- data.instructions %>
+                </ol>
+            </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="nutrition">
-            <h3>Nutrition Facts</h3>
-            <p>Per serving: 265 calories; total fat: 22g; saturated fat: 6g; cholesterol: 22mg; sodium: 538mg; total
-                carbohydrate: 14g; dietary fiber: 5g;
-                total sugars: 6g; protein: 6g; vitamin c: 79mg; calcium: 201mg; iron: 2mg; potassium: 483mg.</p>
-        </div>
-    </div>
 </body>

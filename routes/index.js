@@ -137,7 +137,7 @@ router.get('/recipe_by_id', async function(req, res) {
     const data = await response.json();
     console.log(data)
     // res.send(data);
-    res.render('recipe', { searchData: data});
+    res.render('recipe', { data: data});
     // 
   } catch (err) {
     res.status(500).send("Error fetching data from API");
