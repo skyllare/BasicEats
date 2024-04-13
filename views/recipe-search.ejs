@@ -22,20 +22,24 @@
     <form action="/recipe_by_id" method="get">
         <div class="results">
             <ul class="results-list">
-                <% searchData.results.forEach((result, index)=> { %>
+                <% searchData.results.forEach((result, index) => { %>
                     <li class="result-item">
                         <div class="result-container">
-                            <img src="<%= result.image || 'public/images/foodImageHolder.jpg' %>"
-                                alt="<%= result.title %>" class="result-image" />
-                                <button type="submit" name="ID" class = "ID" value="<%= result.id %>">
+                            <div class="image-container">
+                                <img src="<%= result.image || 'public/images/foodImageHolder.jpg' %>"
+                                    alt="<%= result.title %>" class="result-image" />
+                            </div>
+                            <div class="text-container">
+                                <button type="submit" name="ID" class="ID" value="<%= result.id %>">
                                     <%= result.title %>
                                 </button>
-                            </span>
+                            </div>
                         </div>
                     </li>
-                    <% }) %>
+                <% }) %>
             </ul>
         </div>
     </form>
+    
 
 </body>
