@@ -161,5 +161,4 @@ router.get('/recipe_by_meal_type', async function(req, res) {
   }
 });
 
-
 module.exports = router;

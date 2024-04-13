@@ -14,6 +14,9 @@
                         <button type="submit" name="type_button" class="type_button" value="appetizer">
                             Appetizer
                         </button>
+                        <button type="submit" name="type_button" class="type_button" value="salad">
+                            Salad
+                        </button>
                         <button type="submit" name="type_button" class="type_button" value="main course">
                             Main
                         </button>
@@ -29,12 +32,23 @@
 
             <!-- Dropdown for INGREDIENT -->
             <div class="dropdown">
-                <a href="#" class="menu-link">INGREDIENT</a>
-                <div class="dropdown-content">
-                    <a href="#">Flour</a>
-                    <a href="#">Sugar</a>
-                    <a href="#">Salt</a>
-                </div>
+                <form action="/search_recipes" method="get">
+                    <a href="#" class="menu-link">INGREDIENT</a>
+                    <div class="dropdown-content">
+                        <button type="submit" name="searchValue" class="ingredient_button" value="chicken">
+                            Chicken
+                        </button>
+                        <button type="submit" name="searchValue" class="ingredient_button" value="fish">
+                            Fish
+                        </button>
+                        <button type="submit" name="searchValue" class="ingredient_button" value="beef">
+                            Beef
+                        </button>
+                        <button type="submit" name="searchValue" class="ingredient_button" value="potato">
+                            Potato
+                        </button>
+                    </div>
+                </form>
             </div>
             <a href="/calendar" class="meal-plan">MEAL-PLAN</a>
             <a href="/aboutus" class="about-us">ABOUT US</a>
