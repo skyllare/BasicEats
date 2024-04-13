@@ -24,19 +24,43 @@ p {
 }
 
 .result-item {
-    width: calc(50% - 10px); /* Two columns with a bit of space in between */
+    width: calc(50% - 10px); 
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: row; 
 }
 
 .result-container {
+    display: flex;
+    flex-direction: row; 
     padding: 10px;
     text-align: center;
+    width: 100%; 
+}
+
+.image-container {
+    margin-left: 7%;
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center; 
 }
 
 .result-image {
     max-width: 100%;
     height: auto;
+    object-fit: cover;
 }
+
+.text-container {
+    flex: 1; 
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; 
+    padding-left: 10px; 
+}
+
+
 
 button.ID{
     background: none;
