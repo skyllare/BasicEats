@@ -46,19 +46,23 @@
     <h1 class="filter-text">
         Search Results for "<%= searchValue %>"
     </h1>
-    <div class="results">
-        <ul class="results-list">
-            <% searchData.results.forEach((result, index) => { %>
-                <li class="result-item">
-                    <div class="result-container">
-                        <img src="<%= result.image || 'public/images/foodImageHolder.jpg' %>" alt="<%= result.title %>" class="result-image" />
-                        <p class="result-title"><%= result.title %></p>
-                    </div>
-                </li>
-            <% }) %>
-        </ul>
-    </div>
-    
-</body>
+    <form action="/recipe_by_id" method="get">
+        <div class="results">
+            <ul class="results-list">
+                <% searchData.results.forEach((result, index)=> { %>
+                    <li class="result-item">
+                        <div class="result-container">
+                            <img src="<%= result.image || 'public/images/foodImageHolder.jpg' %>"
+                                alt="<%= result.title %>" class="result-image" />
+                                <button type="submit" name="ID" value="<%= result.id %>">
+                                    <%= result.title %>
+                                </button>
+                            </span>
+                        </div>
+                    </li>
+                    <% }) %>
+            </ul>
+        </div>
+    </form>
 
-<!-- search_results.ejs
+</body>

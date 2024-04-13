@@ -118,9 +118,27 @@ router.get('/search_recipes', async function(req, res) {
   try {
     const response = await fetch(url);
     const data = await response.json();
+    console.log(data)
     // res.send(data);
     res.render('recipe-search', { searchData: data, searchValue: searchValue });
     // console.log(data)
+  } catch (err) {
+    res.status(500).send("Error fetching data from API");
+  }
+});
+
+router.get('/recipe_by_id', async function(req, res) {
+  const ID = req.query.ID;
+  console.log(ID);
+  const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${MY_API_KEY}&recipeBoxId=${ID}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data)
+    // res.send(data);
+    res.render('recipe', { searchData: data, searchValue: searchValue });
+    // 
   } catch (err) {
     res.status(500).send("Error fetching data from API");
   }
