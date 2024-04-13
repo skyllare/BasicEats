@@ -64,6 +64,21 @@ p {
     display: inline-block;
     width: 30%;
 }
+/*for drop downs*/
+
+.type_button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-left: 1%;
+    font: inherit;
+    font-size: 16px;
+    color: black;
+    display: block; /* Display each button as a block element */
+    width: 100%; /* Make each button occupy 100% width of its container */
+    text-align: left; /* Align button text to the left */
+    margin-bottom: 10px; /* Add bottom margin to separate buttons */
+}
 
 #custom-search-input {
     display: inline-block;
