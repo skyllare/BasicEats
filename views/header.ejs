@@ -8,23 +8,34 @@
         <a href="/login" class="login">LOG IN/ SIGN UP</a>
         <div class="top-bar">
             <div class="dropdown">
-                <a href="#" class="menu-link">MEAL</a>
-                <div class="dropdown-content">
-                  <a href="#">Breakfast</a>
-                  <a href="#">Lunch</a>
-                  <a href="#">Dinner</a>
-                </div>
-              </div>
-              
-              <!-- Dropdown for INGREDIENT -->
-              <div class="dropdown">
+                <form action="/recipe_by_meal_type" method="get">
+                    <a href="#" class="menu-link">MEAL</a>
+                    <div class="dropdown-content">
+                        <button type="submit" name="type_button" class="type_button" value="appetizer">
+                            Appetizer
+                        </button>
+                        <button type="submit" name="type_button" class="type_button" value="main course">
+                            Main
+                        </button>
+                        <button type="submit" name="type_button" class="type_button" value="side dish">
+                            Side
+                        </button>
+                        <button type="submit" name="type_button" class="type_button" value="dessert">
+                            Dessert
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Dropdown for INGREDIENT -->
+            <div class="dropdown">
                 <a href="#" class="menu-link">INGREDIENT</a>
                 <div class="dropdown-content">
-                  <a href="#">Flour</a>
-                  <a href="#">Sugar</a>
-                  <a href="#">Salt</a>
+                    <a href="#">Flour</a>
+                    <a href="#">Sugar</a>
+                    <a href="#">Salt</a>
                 </div>
-              </div>
+            </div>
             <a href="/calendar" class="meal-plan">MEAL-PLAN</a>
             <a href="/aboutus" class="about-us">ABOUT US</a>
             <div class="search_bar">
@@ -32,8 +43,8 @@
                     <div class="row">
                         <div id="custom-search-input">
                             <div class="input-group col-md-12">
-                                <input type="text" id="searchValue" name="searchValue" class=" search-query form-control"
-                                    placeholder="Search Recipes..." />
+                                <input type="text" id="searchValue" name="searchValue"
+                                    class=" search-query form-control" placeholder="Search Recipes..." />
                                 <span class="input-group-btn">
                                     <button class="btn btn-danger" type="submit">
                                         <span class=" glyphicon glyphicon-search"></span>
