@@ -130,14 +130,14 @@ router.get('/search_recipes', async function(req, res) {
 router.get('/recipe_by_id', async function(req, res) {
   const ID = req.query.ID;
   console.log(ID);
-  const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${MY_API_KEY}&recipeBoxId=${ID}`;
+  const url = `https://api.spoonacular.com/recipes/${ID}/information?apiKey=${MY_API_KEY}`;
 
   try {
     const response = await fetch(url);
     const data = await response.json();
     console.log(data)
     // res.send(data);
-    res.render('recipe', { searchData: data, searchValue: searchValue });
+    res.render('recipe', { searchData: data});
     // 
   } catch (err) {
     res.status(500).send("Error fetching data from API");
