@@ -1,0 +1,34 @@
+<div>
+    <link rel="stylesheet" type="text/css" href="./css/header.css">
+    <div class="nav-bar">
+        <a href="/">
+            <img id="logo" src="images/logo.png" alt="" href="/index" />
+        </a>
+
+        <a href="/login" class="login">LOG IN/ SIGN UP</a>
+        <div class="top-bar">
+            <a href="/recipe-search" class="meal">MEAL</a>
+            <p class="ingredient">INGREDIENT</p>
+            <a href="/calendar" class="meal-plan">MEAL-PLAN</a>
+            <a href="/aboutus" class="about-us">ABOUT US</a>
+            <div class="search_bar">
+                <form action="/search_recipes" method="get">
+                    <div class="row">
+                        <div id="custom-search-input">
+                            <div class="input-group col-md-12">
+                                <input type="text" id="searchValue" name="searchValue" class=" search-query form-control"
+                                    placeholder="Search Recipes..." />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-danger" type="submit">
+                                        <span class=" glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <a href="/view-users" class="account">ACCOUNT</a>
+        </div>
+    </div>
+</div>

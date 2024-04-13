@@ -7,319 +7,185 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/index.css" />
-    <!-- <script src="petition.js"></script> -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="./css/calendar.css" />
+    <script src="./javascript/calendar-functions.js"></script>
     <title>Basic Eats</title>
-    <script>
-        function displayMeal(day, mealNumber) {
-            fetch(`/meal/${day}/${mealNumber}`)
-                .then(response => response.text())
-                .then(meal => {
-                    document.getElementById('mealDisplay').innerHTML = meal;
-                })
-                .catch(error => {
-                    console.error('Error fetching meal:', error);
-                });
-        }
-    </script>
-    </script>
-    <style>
-        .calendar {
-            color: gray;
-            display: grid;
-            background:#6f8c69;
-            margin: 0px;
-            grid-template-columns: repeat(7, 1fr);
-            text-align: center;
-            margin: 0px;
-            padding: 0px;
-            width: 100%;
-            padding-top:15px;
-        }
-        .day {
-            flex-grow: 1;
-            margin: 0px;
-            padding: 0px;
-            width: 100%;
-            align-items: center;
-            cursor: pointer;
-            border: none;
-        }
-        .dayType {
-            color: rgb(105, 105, 105);
-            font-weight: bold;
-            border: 1px solid #ccc;
-            height:35px;
-            background-color: white;
-            align-items:center;
-            display: grid;
-            width: 100%;
-            
-        }
-        .meal1 {
-            color: rgb(105, 105, 105);
-            border: 1px solid #ccc;
-            height:55px;
-            align-items:center;
-            display: grid;
-            background-color:#a7c7a1;
-            width: 100%;
-        }
-        .meal2 {
-            color: rgb(105, 105, 105);
-            border: 1px solid #ccc;
-            height:55px;
-            align-items:center;
-            display: grid;            
-            background-color:#91b08b;
-            width: 100%;
-        }
-        .meal3 {
-            color: rgb(105, 105, 105);
-            border: 1px solid #ccc;
-            height:55px;
-            align-items:center;
-            display: grid;            
-            background-color:#7ca175;
-            width: 100%;
-        }
-        
-        .col-5 {
-            box-sizing: border-box;
-        }
-        .column {
-            flex-wrap: wrap;
-            width: 50%;
-            padding: 10px;
-            box-sizing: border-box;
-            text-align: center;
-        }
-        .left {
-            width: 70%;
-            text-align:center; 
-            justify-content: center;
-        }
-        .right {
-            width: 30%;
-        }
-        @media (max-width: 1000px) {
-            .column {
-                width: 100%;
-            }
-        }
-        .generate {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            background-color: #6f8c69;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 20px;
-            border: none;
-        }
-        .smallImg{
-            width: 35px;
-            height: 35px;
-        }
-        .mealContainer {
-            display:flex; 
-            flex: 1; 
-            border: 1px solid #ccc; 
-            margin: 0px; 
-            padding: 0px; 
-            align-items: center;
-            background-color: white;
-        }
-        .mealType {
-            display:inline; 
-            text-align: left; 
-            width: 30%; 
-            height: 75px; 
-            border: 1px solid #ccc; 
-            margin: 0px; 
-            padding: 0px;
-            padding-left: 20px;
-        }
-    </style>
 </head>
 
 <body>
     <!--NAVBAR:-->
-    <div class="nav-bar">
-        <a href="/">
-            <img class="logo" src="images/logo.png" alt="" href="/index"/>
-        </a>
-        <a href="/login" class="login">LOG IN/ SIGN UP</a>
-        <div class="top-bar">
-            <a href="/recipe-search" class="meal">MEAL</a>
-            <p class="ingredient">INGREDIENT</p>
-            <a href="/calendar" class="meal-plan">MEAL-PLAN</a>
-            <a href="/aboutus" class="about-us">ABOUT US</a>
-            <a href="/view-users" class="account">ACCOUNT</a>
-        </div>
-    </div>
+    <%- include('header.ejs') %>
 
-    <div class="container">
-        <div class="row " style="margin-top:0px; padding-top: 0px;">
-            <!--CALENDAR:-->
-            <div class="left column col-7" style="background-color: #6f8c69; margin-top:0px; ">
-                <h1>Weekly Meal Calendar</h1>
-                <div class="calendar">
-                    <!--Sunday-->
-                    <div class="day">
+        <div class="container">
+            <div class="row " style="margin-top:0px; padding-top: 0px;">
+                <!--CALENDAR:-->
+                <div class="left column col-7" style="background-color: #6f8c69; margin-top:0px; ">
+                    <h1>Weekly Meal Calendar</h1>
+                    <div class="calendar">
+                        <!--Sunday-->
+                        <div class="day">
                             <button onclick="displayMeal('Sunday', 1)" class="dayType"><u>Sunday</u></button>
                             <button class="meal1">
-                                <% if (mealsByDay['Sunday'][1].length > 0) { %>
+                                <% if (mealsByDay['Sunday'][1].length> 0) { %>
                                     <%= mealsByDay['Sunday'][1][0].name %>
-                            <% } else { %>
-                                no meals
-                            <% } %>
+                                        <% } else { %>
+                                            no meals
+                                            <% } %>
                             </button>
                             <button class="meal2">
-                                    <% if (mealsByDay['Sunday'][2].length > 0) { %>
-                                        <%= mealsByDay['Sunday'][2][0].name %>
-                                    <% } else { %>
-                                        no meals
-                                    <% } %>
+                                <% if (mealsByDay['Sunday'][2].length> 0) { %>
+                                    <%= mealsByDay['Sunday'][2][0].name %>
+                                        <% } else { %>
+                                            no meals
+                                            <% } %>
                             </button>
-                            
+
                             <button class="meal3">
-                                <% if (mealsByDay['Sunday'][3].length > 0) { %>
+                                <% if (mealsByDay['Sunday'][3].length> 0) { %>
                                     <%= mealsByDay['Sunday'][3][0].name %>
-                                <% } else { %>
-                                    no meals
-                                <% } %>
+                                        <% } else { %>
+                                            no meals
+                                            <% } %>
                             </button>
-                            
-                    </div>
-                    <!--Monday-->
-                    <div class="day">
-                        <button class="dayType"><u>Monday</u></button>
-                        <button class="meal1">
-                            <% if (mealsByDay['Monday'][1].length > 0) { %>
-                                <%= mealsByDay['Monday'][1][0].name %>
-                            <% } else { %>
-                                no meals
-                            <% } %>
-                        </button>
-                        <button class="meal2">
-                            <% if (mealsByDay['Monday'][2].length > 0) { %>
-                                <%= mealsByDay['Monday'][2][0].name %>
-                            <% } else { %>
-                                no meals
-                            <% } %>
-                        </button>
-                        <button class="meal3">
-                            <% if (mealsByDay['Monday'][3].length > 0) { %>
-                                <%= mealsByDay['Monday'][3][0].name %>
-                            <% } else { %>
-                                no meals
-                            <% } %>
-                        </button>
-                    </div>
-                    <!--Tuesday-->
-                    <div class="day">
-                        <div class="dayType"><u>Tuesday</u></div>
-                        <div class="meal1">
-                            Sandwich
+
                         </div>
-                        <div class="meal2">Lasagna</div>
-                        <div class="meal3">Chicken Sandwich</div>
-                    </div>
-                    <!--Wednesday-->
-                    <div class="day">
-                        <div class="dayType"><u>Wednesday</u></div>
-                        <div class="meal1">Breakfast Burrito</div>
-                        <div class="meal2">Caesar Salad</div>
-                        <div class="meal3">Rice with Greens</div>
-                    </div>
-                    <!--Thursday-->
-                    <div class="day">
-                        <div class="dayType"><u>Thursday</u></div>
-                        <div class="meal1">Potatoes</div>
-                        <div class="meal2">BBQ Chicken</div>
-                        <div class="meal3">Greek Yogurt</div>
-                    </div>
-                    <!--Friday-->
-                    <div class="day">
-                        <div class="dayType"><u>Friday</u></div>
-                        <div class="meal1">Breakfast Tacos</div>
-                        <div class="meal2">Chicken Caesar Wrap</div>
-                        <div class="meal3">Lemon Salmon</div>
-                    </div>
-                    <!--Saturday-->
-                    <div class="day">
-                        <div class="dayType"><u>Saturday</u></div>
-                        <div class="meal1">Granola</div>
-                        <div class="meal2">Mushroom Soup</div>
-                        <div class="meal3">Chicken Pot Pie</div>
+                        <!--Monday-->
+                        <div class="day">
+                            <button class="dayType"><u>Monday</u></button>
+                            <button class="meal1">
+                                <% if (mealsByDay['Monday'][1].length> 0) { %>
+                                    <%= mealsByDay['Monday'][1][0].name %>
+                                        <% } else { %>
+                                            no meals
+                                            <% } %>
+                            </button>
+                            <button class="meal2">
+                                <% if (mealsByDay['Monday'][2].length> 0) { %>
+                                    <%= mealsByDay['Monday'][2][0].name %>
+                                        <% } else { %>
+                                            no meals
+                                            <% } %>
+                            </button>
+                            <button class="meal3">
+                                <% if (mealsByDay['Monday'][3].length> 0) { %>
+                                    <%= mealsByDay['Monday'][3][0].name %>
+                                        <% } else { %>
+                                            no meals
+                                            <% } %>
+                            </button>
+                        </div>
+                        <!--Tuesday-->
+                        <div class="day">
+                            <div class="dayType"><u>Tuesday</u></div>
+                            <div class="meal1">
+                                Sandwich
+                            </div>
+                            <div class="meal2">Lasagna</div>
+                            <div class="meal3">Chicken Sandwich</div>
+                        </div>
+                        <!--Wednesday-->
+                        <div class="day">
+                            <div class="dayType"><u>Wednesday</u></div>
+                            <div class="meal1">Breakfast Burrito</div>
+                            <div class="meal2">Caesar Salad</div>
+                            <div class="meal3">Rice with Greens</div>
+                        </div>
+                        <!--Thursday-->
+                        <div class="day">
+                            <div class="dayType"><u>Thursday</u></div>
+                            <div class="meal1">Potatoes</div>
+                            <div class="meal2">BBQ Chicken</div>
+                            <div class="meal3">Greek Yogurt</div>
+                        </div>
+                        <!--Friday-->
+                        <div class="day">
+                            <div class="dayType"><u>Friday</u></div>
+                            <div class="meal1">Breakfast Tacos</div>
+                            <div class="meal2">Chicken Caesar Wrap</div>
+                            <div class="meal3">Lemon Salmon</div>
+                        </div>
+                        <!--Saturday-->
+                        <div class="day">
+                            <div class="dayType"><u>Saturday</u></div>
+                            <div class="meal1">Granola</div>
+                            <div class="meal2">Mushroom Soup</div>
+                            <div class="meal3">Chicken Pot Pie</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!--MEAL GENERATOR-->
-            <div class="right col-4 column" style="background-color: #dddddd; display: block;">
-                <!--Text with button-->
-                <div style="display:inline; width: 100%;">
-                    <h2>Meal Generator</h2>
-                    
-                    <p>Click the button below to generate weekly meals:</p>
-                    <form action="/submit" method="post">
-                        <select id="dropdown" name="dropdown">
-                          <option value="option1">Regular</option>
-                          <option value="option2">Vegetarian</option>
-                          <option value="option3">Vegan</option>
-                        </select>
-                        <br><br>
-                      </form>
-                    <button class="generate">Generate Meals</button>
-                    <p style="padding-top:15px">Selected Day: <u>Sunday</u></p>
-                </div>
-                <!--MealContainer classes-->
-                <!--Breakfast-->
-                <div id="mealDisplay"></div>
-                <div class="mealContainer" style="margin-top:10px">
-                    <div class="mealType" style="">
-                        <p style="display:inline">Breakfast</p>
-                        <br>
-                        <image class="smallImg" src="images/foodImageHolder.jpg" style="display:inline"></image>
-                        <p style="display:inline">Eggs</p>
+                <!--MEAL GENERATOR-->
+                <div class="right col-4 column" style="background-color: #dddddd; display: block;">
+                    <!--Text with button-->
+                    <div style="display:inline; width: 100%;">
+                        <h2>Meal Generator</h2>
+
+                        <p>Click the button below to generate weekly meals:</p>
+                        <form action="/submit" method="post">
+                            <select id="dropdown" name="dropdown">
+                                <option value="option1">Regular</option>
+                                <option value="option2">Vegetarian</option>
+                                <option value="option3">Vegan</option>
+                            </select>
+                            <br><br>
+                        </form>
+                        <button class="generate">Generate Meals</button>
+                        <p style="padding-top:15px">Selected Day: <u>Sunday</u></p>
                     </div>
-                    <div class="col-4" style="display:inline; width: 70%; ">
-                        <p style="display:inline;">1 servings | </p>
-                        <p style="display:inline;">Ingredients: Eggs</p>
-                    </div>                
-                </div>
-                <!--Lunch-->
-                <div class="mealContainer" style="">
-                    <div class="mealType" style="">
-                        <p style="display:inline">Lunch</p>
-                        <br>
-                        <image class="smallImg" src="images/foodImageHolder.jpg" style="display:inline"></image>
-                        <p style="display:inline">Meat</p>
+                    <!--MealContainer classes-->
+                    <!--Breakfast-->
+                    <div id="mealDisplay"></div>
+                    <div class="mealContainer" style="margin-top:10px">
+                        <div class="mealType" style="">
+                            <p style="display:inline">Breakfast</p>
+                            <br>
+                            <image class="smallImg" src="images/foodImageHolder.jpg" style="display:inline"></image>
+                            <p style="display:inline">Eggs</p>
+                        </div>
+                        <div class="col-4" style="display:inline; width: 70%; ">
+                            <p style="display:inline;">1 servings | </p>
+                            <p style="display:inline;">Ingredients: Eggs</p>
+                        </div>
                     </div>
-                    <div class="col-4" style="display:inline; width: 70%; ">
-                        <p style="display:inline;">1 servings | </p>
-                        <p style="display:inline;">Ingredients: Chicken</p>
-                    </div>                
-                </div>
-                <!--Dinner-->
-                <div class="mealContainer" style="">
-                    <div class="mealType" style="">
-                        <p style="display:inline">Dinner</p>
-                        <br>
-                        <image class="smallImg" src="images/foodImageHolder.jpg" style="display:inline"></image>
-                        <p style="display:inline">Curry</p>
+                    <!--Lunch-->
+                    <div class="mealContainer">
+                        <div class="mealType">
+                            <p style="display:inline">Lunch</p>
+                            <br>
+                            <image class="smallImg" src="images/foodImageHolder.jpg" style="display:inline"></image>
+                            <p style="display:inline">Meat</p>
+                        </div>
+                        <div class="col-4" style="display:inline; width: 70%; ">
+                            <p style="display:inline;">1 servings | </p>
+                            <p style="display:inline;">Ingredients: Chicken</p>
+                        </div>
                     </div>
-                    <div class="col-4" style="display:inline; width: 70%; ">
-                        <div style="display:inline; width: 90%;"><p style="display:inline;">2 servings | </p>
-                        <p style="display:inline;">Ingredients: Chicken, curry</p></div>
-                        
-                        <div  style="display:inline; width: 10%; position:relative;"><button style="background-color:white">
-                        <image src="images/reload.png" style="display:inline; color: gray; opacity: .4; height: 20px; cursor: pointer;"></image>
-                        </button></div>
+                    <!--Dinner-->
+                    <div class="mealContainer">
+                        <div class="mealType">
+                            <p style="display:inline">Dinner</p>
+                            <br>
+                            <image class="smallImg" src="images/foodImageHolder.jpg" style="display:inline"></image>
+                            <p style="display:inline">Curry</p>
+                        </div>
+                        <div class="col-4" style="display:inline; width: 70%; ">
+                            <div style="display:inline; width: 90%;">
+                                <p style="display:inline;">2 servings | </p>
+                                <p style="display:inline;">Ingredients: Chicken, curry</p>
+                            </div>
+
+                            <div style="display:inline; width: 10%; position:relative;"><button
+                                    style="background-color:white">
+                                    <image src="images/reload.png"
+                                        style="display:inline; color: gray; opacity: .4; height: 20px; cursor: pointer;">
+                                    </image>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </body>
