@@ -13,8 +13,8 @@ p {
     box-shadow: 0 4px 2px -2px rgb(208, 207, 207);
 }
 
-#logo  {
-    width: 20% ;
+#logo {
+    width: 20%;
     margin-left: 2%;
     margin-top: 2%;
     margin-bottom: -2%;
@@ -101,4 +101,43 @@ p {
 
 .search-query:focus+button {
     z-index: 3;
+}
+
+/* drop down */
+/* Style the dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+/* Style the link inside the dropdown */
+.dropdown .menu-link {
+    color: black;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: inline-block;
+}
+
+/* Style the dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    min-width: 160px;
+}
+
+/* Show the dropdown content when the link is hovered over */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Style the dropdown links */
+.dropdown-content a {
+    color: black;
+    padding: 10px 15px;
+    display: block;
+    text-decoration: none;
 }
