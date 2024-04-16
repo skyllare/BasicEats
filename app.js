@@ -11,6 +11,7 @@ const MealPlan = require('./models/MealPlan')
 
 var indexRouter = require('./routes/index');
 var calendarRouter = require('./routes/calendar');
+var accountRouter = require('./routes/account');
 
 var app = express();
 
@@ -41,7 +42,7 @@ app.use('/aboutus', indexRouter);
 app.use('/index', indexRouter);
 app.use('/recipe-search', indexRouter);
 app.use('/recipe', indexRouter);
-app.use('/view-users', indexRouter);
+app.use('/account', accountRouter);
 app.use('/signup', indexRouter);
 app.use('/calendar', calendarRouter);
 
