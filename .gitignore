@@ -1,2 +1,3 @@
 node_modules/
 routes/config.js
+database/hw2db.sqlite
