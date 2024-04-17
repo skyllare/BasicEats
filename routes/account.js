@@ -1,6 +1,7 @@
 const { MY_API_KEY } = require('./config');
 var express = require('express');
 const User = require('../models/User');
+const Recipe = require('../models/Recipe');
 var router = express.Router();
 
 
@@ -14,17 +15,28 @@ router.get('/', async function (req, res, next) {
     }
 
     if (req.query.msg) {
-        res.locals.msg = req.query.msg
+        res.locals.msg = req.query.msg;
     }
-    res.render('account', { admin: req.session.user.admin });
+    res.render("account", { user: user });
 });
 
-router.get('/change_password', async function (req, res, next) {
-    console.log("test")
+router.get('/myrecipes', async function (req, res, next) {
+    const user = req.session.user;
+    const recipes = await Recipe.findAll({ where: { username: 'subu' } });
     if (req.query.msg) {
         res.locals.msg = req.query.msg;
     }
-    res.render('change_password', { admin: req.session.user.admin });
+
+    res.render("myrecipes", { user: user, recipes: recipes });
+});
+
+
+router.get('/change_password', async function (req, res, next) {
+    const user = req.session.user;
+    if (req.query.msg) {
+        res.locals.msg = req.query.msg;
+    }
+    res.render("change_password", { user: user });
 });
 
 router.post('/change_password', async function (req, res, next) {
@@ -34,22 +46,21 @@ router.post('/change_password', async function (req, res, next) {
     if (user !== null) {
         if (password === confirmPassword) {
             try {
-                user.password = password;           
+                user.password = password;
                 console.log("Password changed successfully");
                 res.locals.msg = "password_success";
-                console.log("TESTS")
                 console.log(user)
-                res.render('account', { admin: req.session.user.admin });
+                res.render("account", { user: user });
 
             } catch (error) {
                 console.error("Error updating password:", error);
                 res.locals.msg = "update_error";
-                res.render('change_password', { admin: req.session.user.admin });
+                res.render("change_password", { user: user });
             }
         } else {
             console.log("Passwords do not match");
             res.locals.msg = "matchfail";
-            res.render('change_password', { admin: req.session.user.admin });
+            res.render("change_password", { user: user });
         }
     } else {
         console.log("user not found")
@@ -58,23 +69,21 @@ router.post('/change_password', async function (req, res, next) {
     }
 });
 
-
-router.post('/create_recipe', async function(req, res, next) {
-//     try {
-//       await Course.create(
-//         {
-//           courseid: req.body.courseid,
-//           coursename: req.body.coursename,
-//           semester: req.body.semester,
-//           coursedesc: req.body.coursedesc,
-//           enrollnum: req.body.enrollnum
-//         }
-//     )
-//     res.redirect('/courses?msg=success&courseid='+req.body.courseid)
-//     } catch (error) {
-//     res.redirect('/courses?msg='+new URLSearchParams(error.toString()).toString()+'&courseid'+req.body.courseid) 
-//     }
-//   }
+router.get('/saved-recipes', function (req, res, next) {
+    const user = req.session.user;
+    if (req.query.msg) {
+        res.locals.msg = req.query.msg
+    }
+    res.render('saved-recipes', { user: user });
 });
+
+router.get('/admin', function (req, res, next) {
+    const user = req.session.user;
+    if (req.query.msg) {
+        res.locals.msg = req.query.msg
+    }
+    res.render('admin', { user: user });
+});
+
 
 module.exports = router;

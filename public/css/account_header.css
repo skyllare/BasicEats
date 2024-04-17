@@ -22,7 +22,7 @@ p {
     display: inline-block;
 }
 
-.saved_recipes,
+.saved-recipes,
 .myrecipes,
 .admin_page {
     text-decoration: none;

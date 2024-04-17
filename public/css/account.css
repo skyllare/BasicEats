@@ -38,3 +38,7 @@ button {
     border-radius: 10px;
     border: 2px solid black;
 }
+
+button:hover {
+    background-color: #56784e;
+  }
