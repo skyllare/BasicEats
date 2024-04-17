@@ -10,7 +10,7 @@
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="./css/login.css" />
   <title>Basic Eats</title>
   <style>
@@ -381,11 +381,16 @@
       <a href="signup" style="display: flex; justify-content: center; text-align:center">Sign Up</a>
     </form>
     <% if(locals.msg && msg==="fail" ) { %>
-      <p>Debug: Message should display</p>
-      <div class="alert alert-danger" role="alert">
-        error
-        <p class="">username and/or password did not match. Try again.</p>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <p class="">The username or password is incorrect</p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
-      <% } %>
+      <% } else if(locals.msg && msg==="signup_success" ) { %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <p class="">Account successfully created. Please sign in</p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% }
+    %>
   </div>
 </body>

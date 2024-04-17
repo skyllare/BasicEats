@@ -50,28 +50,29 @@ app.use('/calendar', calendarRouter);
 
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
   next(createError(404));
 });
 
 async function setup() {
-  const subu = await User.create({ username: "subu", password: "1234", admin: true });
-  const meals = await MealPlan.bulkCreate([
-    { username: 'caitlin', day: '2024-04-11', weekday: 'Sunday', mealNum: 1, name: "eggs" },
-    { username: 'd', day: '2024-04-12', weekday: 'Monday', mealNum: 1, name: "friday" }
-  ]);
+  const subu = await User.create({ username: "subu", password: "1234" });
+const meals = await MealPlan.bulkCreate([
+            { username: 'caitlin', day: '2024-04-11', weekday:'Sunday', mealNum: 1, name: "eggs" },
+            { username: 'd', day: '2024-04-12', weekday:'Monday', mealNum: 1, name: "friday" }
+]);
 
   console.log("subu instance created...")
+  console.l
 }
 
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: true }).then(()=>{
   console.log("Sequelize Sync Completed...");
-  setup().then(() => console.log("User setup complete"))
+  setup().then(()=> console.log("User setup complete"))
 })
 
 module.exports = app;
