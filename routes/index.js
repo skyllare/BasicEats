@@ -53,12 +53,12 @@ router.get('/recipe', function(req, res, next) {
 
 
 
-router.get('/view-users', function(req, res, next) {
-  if(req.query.msg){
-    res.locals.msg = req.query.msg
-  }
-  res.render('view-users');
-});
+// router.get('/change_password', function(req, res, next) {
+//   if(req.query.msg){
+//     res.locals.msg = req.query.msg
+//   }
+//   res.render('change_password');
+// });
 
 router.post('/login', async function(req, res, next) {
   //console.log(req.body.username+" - "+req.body.password);
