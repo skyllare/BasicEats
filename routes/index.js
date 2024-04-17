@@ -50,16 +50,6 @@ router.get('/recipe', function(req, res, next) {
   res.render('recipe');
 });
 
-
-
-
-// router.get('/change_password', function(req, res, next) {
-//   if(req.query.msg){
-//     res.locals.msg = req.query.msg
-//   }
-//   res.render('change_password');
-// });
-
 router.post('/login', async function(req, res, next) {
   //console.log(req.body.username+" - "+req.body.password);
   console.log("login post")
@@ -82,7 +72,8 @@ router.post('/create', async function(req, res, next) {
     await User.create(
       {
         username: req.body.username,
-        password: req.body.password
+        password: req.body.password,
+        admin: false
       }
   )
   res.redirect("/");
