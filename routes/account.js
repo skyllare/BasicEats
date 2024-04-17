@@ -59,4 +59,21 @@ router.post('/change_password', async function (req, res, next) {
 });
 
 
+router.post('/create_recipe', async function(req, res, next) {
+    try {
+      await Course.create(
+        {
+          courseid: req.body.courseid,
+          coursename: req.body.coursename,
+          semester: req.body.semester,
+          coursedesc: req.body.coursedesc,
+          enrollnum: req.body.enrollnum
+        }
+    )
+    res.redirect('/courses?msg=success&courseid='+req.body.courseid)
+    } catch (error) {
+    res.redirect('/courses?msg='+new URLSearchParams(error.toString()).toString()+'&courseid'+req.body.courseid) 
+    }
+  });
+
 module.exports = router;
