@@ -9,9 +9,8 @@ var router = express.Router();
 router.get('/', function (req, res, next) {
   if (req.query.msg) {
     res.locals.msg = req.query.msg
-    console.log(res.locals.msg)
   }
-  res.render('index');
+  res.render("index", {msg: undefined})
 });
 
 router.get('/login', function (req, res, next) {
@@ -63,14 +62,13 @@ router.post('/login', async function (req, res, next) {
       admin: user.admin,
       recipe_count: user.recipe_count,
     };
-    
+
     res.locals.msg = "login_success";
-    res.redirect("/")
+    res.render("index", {msg: res.locals.msg})
     console.log("user = " + req.session.user)
     console.log("user found")
   } else {
     console.log("user not found")
-    // res.redirect("/login");
     res.locals.msg = "fail";
     res.render('login');
   }
@@ -82,7 +80,8 @@ router.post('/create', async function (req, res, next) {
       {
         username: req.body.username,
         password: req.body.password,
-        admin: false
+        admin: false,
+        recipe_count: 0
       }
     )
     res.locals.msg = "signup_success";
@@ -97,10 +96,6 @@ router.post('/create', async function (req, res, next) {
 });
 
 
-
-
-
-
 router.get('/logout', function (req, res, next) {
   if (req.session.user) {
     req.session.destroy()
@@ -108,7 +103,6 @@ router.get('/logout', function (req, res, next) {
   } else {
     res.redirect("/")
   }
-
 })
 
 router.get('/search_recipes', async function (req, res) {

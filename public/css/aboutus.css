@@ -8,55 +8,6 @@ p {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.top-bar {
-    background-color: white;
-    box-shadow: 0 4px 2px -2px rgb(208, 207, 207);
-}
-
-.logo {
-    width: 20%;
-    margin-left: 2%;
-    margin-top: 2%;
-    display: inline-block;
-}
-
-.login {
-    float: right;
-    margin-right: 4%;
-    margin-top: 3%;
-    text-decoration: none;
-    color: black;
-}
-
-.meal,
-.ingredient,
-.meal-plan,
-.about-us {
-    text-decoration: none;
-    color: black;
-    font-size: 16px;
-    margin-top: 1%;
-    margin-left: 4%;
-    margin-right: 4%;
-    display: inline-block;
-}
-
-.nav-bar a:hover {
-    color: #6f8c69;
-}
-
-.account {
-    text-decoration: none;
-    color: black;
-    float: right;
-    font-size: 16px;
-    margin-right: 4%;
-    margin-top: 2.3%;
-}
-
-.row {
-    margin-top: 4%;
-}
 
 .aboutus_image {
     display: block;
@@ -86,48 +37,4 @@ p {
     text-decoration: underline;
     color: #6f8c69;
     text-decoration-color: #6f8c69;
-}
-
-/* Search bar */
-
-.search_bar{
-    display: inline-block;
-    width: 30%;
-}
-#custom-search-input {
-    display: inline-block;
-    padding: 0;
-}
-
-#custom-search-input .search-query {
-    padding-right: 3px;
-    padding-right: 4px \9;
-    padding-left: 3px;
-    padding-left: 4px \9;
-    /* IE7-8 doesn't have border-radius, so don't indent the padding */
-
-    margin-bottom: 0;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-}
-
-#custom-search-input button {
-    border: 0;
-    background: none;
-    /** belows styles are working good */
-    padding: 2px 5px;
-    margin-top: 2px;
-    position: relative;
-    left: -28px;
-    /* IE7-8 doesn't have border-radius, so don't indent the padding */
-    margin-bottom: 0;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    color:#6f8c69;
-}
-
-.search-query:focus + button {
-    z-index: 3;   
 }

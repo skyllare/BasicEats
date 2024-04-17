@@ -8,10 +8,6 @@ p {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.row {
-    margin-top: 4%;
-
-}
 
 .chili {
     width: 100%;
@@ -26,7 +22,6 @@ p {
 .top-recipes-title {
     text-align: center;
     font-size: 30px;
-
 }
 
 .top-recipe-1 {
