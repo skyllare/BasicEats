@@ -11,6 +11,7 @@
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <style>
     /* BASIC */
 
@@ -386,15 +387,15 @@
         <input type="password" id="password" name="password" placeholder="password" required>
       </div>
       <div class="input-group">
-        <input type="submit" value="Log In">
+        <input type="submit" value="Make Account">
       </div>
       <a href="login" style="display: flex; justify-content: center; text-align:center">Log In</a>
     </form>
     <% if(locals.msg && msg==="fail" ) { %>
       <p>Debug: Message should display</p>
-      <div class="alert alert-danger" role="alert">
-        error
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
         <p class="">Username already taken. Choose a unique username.</p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
       <% } %>
   </div>
