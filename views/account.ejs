@@ -16,11 +16,57 @@
 </head>
 
 <body>
-    <%- include('account_header.ejs', { admin: admin }) %>
+    <%- include('account_header.ejs', { admin: user.admin }) %>
     <% if(locals.msg && locals.msg==="password_success" ) { %>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <p class="">Password successfully changed</p>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <% } %>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <p class="header mb-0">Username</p>
+            </div>
+            <div class="col-sm-8">
+                <p class="answer mb-0">
+                    <%= user.username %>
+                </p>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-4">
+                <p class="header mb-0">Recipes Created</p>
+            </div>
+            <div class="col-sm-8">
+                <p class="answer mb-0">
+                    <%= user.recipe_count %>
+                </p>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-4">
+                <p class="header mb-0">User Role</p>
+            </div>
+            <div class="col-sm-8">
+                <% if(user.admin) { %>
+                    <p class="answer mb-0">Admin</p>
+                <% } else  { %>
+                    <p class="answer mb-0">General</p>
+                <% } %>
+            </div>
+        </div>
+        <hr>
+        <!-- <a class="btn mx-auto " href="/change_password">CHANGE PASSWORD</a> -->
+        <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-md-6 text-center">
+                <a href="/change_password">
+                    <button>CHANGE PASSWORD</button>
+                </a>
+              </div>
+            </div>
+    </div>
 </body>
