@@ -42,8 +42,9 @@ app.use('/aboutus', indexRouter);
 app.use('/index', indexRouter);
 app.use('/recipe-search', indexRouter);
 app.use('/recipe', indexRouter);
-app.use('/account', accountRouter);
 app.use('/signup', indexRouter);
+app.use('/account', accountRouter);
+app.use('/change_password', accountRouter);
 app.use('/calendar', calendarRouter);
 
 
