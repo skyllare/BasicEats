@@ -391,8 +391,7 @@
       </div>
       <a href="login" style="display: flex; justify-content: center; text-align:center">Log In</a>
     </form>
-    <% if(locals.msg && msg==="fail" ) { %>
-      <p>Debug: Message should display</p>
+    <% if(locals.msg && msg==="signup_fail" ) { %>
       <div class="alert alert-danger alert-dismissible fade show" role="alert">
         <p class="">Username already taken. Choose a unique username.</p>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
