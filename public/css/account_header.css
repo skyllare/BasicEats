@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+p {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.top-bar {
+    background-color: white;
+    box-shadow: 0 4px 2px -2px rgb(208, 207, 207);
+    padding-bottom: 0.5%;
+}
+
+#logo {
+    width: 20%;
+    margin-left: 2%;
+    margin-top: 2%;
+    margin-bottom: -3%;
+    display: inline-block;
+}
+
+.saved_recipes,
+.myrecipes,
+.admin_page {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+    margin-left: 2.5%;
+    margin-right: 4%;
+    display: inline-block;
+}
+
+.nav-bar a:hover {
+    color: #6f8c69;
+    text-decoration: underline;
+}
+
+.account {
+    text-decoration: none;
+    color: black;
+    float: right;
+    font-size: 16px;
+    margin-right: 4%;
+}
+
+.row {
+    margin-top: 3%;
+
+}
