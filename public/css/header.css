@@ -63,6 +63,7 @@ p {
 .search_bar {
     display: inline-block;
     width: 30%;
+    margin-left: 5%;
 }
 /*for drop downs*/
 
