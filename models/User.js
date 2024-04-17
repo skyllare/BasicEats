@@ -28,7 +28,13 @@ User.init({
   password: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  admin :{
+    type: Boolean,
+    allowNull: false,
+    defaultValue: false,
   }
+
 }, {
   sequelize, 
   modelName: 'User',
