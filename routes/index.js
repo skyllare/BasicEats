@@ -9,6 +9,7 @@ var router = express.Router();
 router.get('/', function (req, res, next) {
   if (req.query.msg) {
     res.locals.msg = req.query.msg
+    console.log(res.locals.msg)
   }
   res.render('index');
 });
@@ -56,8 +57,16 @@ router.post('/login', async function (req, res, next) {
   console.log(req.body.username)
   const user = await User.findUser(req.body.username, req.body.password)
   if (user !== null) {
-    req.session.user = user
+    req.session.user = {
+      username: user.username,
+      password: user.password,
+      admin: user.admin,
+      recipe_count: user.recipe_count,
+    };
+    
+    res.locals.msg = "login_success";
     res.redirect("/")
+    console.log("user = " + req.session.user)
     console.log("user found")
   } else {
     console.log("user not found")
