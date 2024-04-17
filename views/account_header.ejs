@@ -1,15 +1,15 @@
 <div>
-    <link rel="stylesheet" type="text/css" href="./css/account_header.css">
+    <link rel="stylesheet" type="text/css" href="/css/account_header.css">
     <div class="nav-bar">
         <a href="/">
-            <img id="logo" src="images/logo.png" alt="BasicEats logo" href="/index" />
+            <img id="logo" src="/images/logo.png" alt="BasicEats logo" href="/index" />
         </a>
         <div class="row">
             <div class="top-bar">
-                <a href="/saved_recipes" class="saved_recipes">SAVED RECIPES</a>
-                <a href="/myrecipes" class="myrecipes">MY RECIPES</a>
+                <a href="/account/saved-recipes" class="saved-recipes">SAVED RECIPES</a>
+                <a href="/account/myrecipes" class="myrecipes">MY RECIPES</a>
                 <% if(admin) { %>
-                    <a href="/admin" class="admin_page">ADMIN</a>
+                    <a href="/account/admin" class="admin_page">ADMIN</a>
                 <% } %>
                 <a href="/account" class="account">ACCOUNT</a>
             </div>

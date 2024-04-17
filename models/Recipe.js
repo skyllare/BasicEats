@@ -16,8 +16,13 @@ class Recipe extends Model {
 
 Recipe.init({
   recipeid: {
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
     primaryKey: true,
+    autoIncrement: true,
+    allowNull: false,
+  },
+  username: {
+    type: DataTypes.STRING,
     allowNull: false
   },
   recipename: {

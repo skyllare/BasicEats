@@ -36,15 +36,16 @@ app.use(session({
 app.use('/', indexRouter);
 
 app.use('/login', indexRouter);
-
-
 app.use('/aboutus', indexRouter);
 app.use('/index', indexRouter);
 app.use('/recipe-search', indexRouter);
 app.use('/recipe', indexRouter);
 app.use('/signup', indexRouter);
-app.use('/account', accountRouter);
 app.use('/change_password', accountRouter);
+app.use('/myrecipes', accountRouter);
+app.use('/saved-recipes', accountRouter);
+app.use('/admin', accountRouter);
+app.use('/account', accountRouter);
 app.use('/calendar', calendarRouter);
 
 
@@ -59,13 +60,13 @@ app.use(function (req, res, next) {
 });
 
 async function setup() {
-  const subu = await User.create({ username: "subu", password: "1234", admin: true, recipe_count: 0 });
+  const subu = await User.create({ username: "subu", password: "1234", admin: true, recipe_count: 1 });
   const meals = await MealPlan.bulkCreate([
     { username: 'caitlin', day: '2024-04-11', weekday: 'Sunday', mealNum: 1, name: "eggs" },
     { username: 'd', day: '2024-04-12', weekday: 'Monday', mealNum: 1, name: "friday" }
   ]);
 
-  const saladRecipe = await Recipe.create({ recipeid: "subu1", recipename: "salad", ingredients: "lettuce, dressing, croutons, strawberries, candied pecans", recipedesc: "strawberry salad perfect for summer", instructions: "1. Candy pecans \n 2. Clean strawberries and chop them \n 3. Chop lettuce \n 4. Put ingredients in a bowl and toss \n 5. Add dressing", time: 20 });
+  const saladRecipe = await Recipe.create({ username: 'subu', recipename: "salad", ingredients: "lettuce, dressing, croutons, strawberries, candied pecans", recipedesc: "strawberry salad perfect for summer", instructions: "1. Candy pecans \n 2. Clean strawberries and chop them \n 3. Chop lettuce \n 4. Put ingredients in a bowl and toss \n 5. Add dressing", time: 20 });
 
   console.log("subu instance created...")
 }

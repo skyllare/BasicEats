@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <%- include('account_header.ejs', { admin: user.admin }) %>
+    <%- include('account_header', { admin: user.admin }) %>
     <% if(locals.msg && locals.msg==="password_success" ) { %>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <p class="">Password successfully changed</p>
@@ -59,14 +59,14 @@
             </div>
         </div>
         <hr>
-        <!-- <a class="btn mx-auto " href="/change_password">CHANGE PASSWORD</a> -->
         <div class="container">
             <div class="row justify-content-center">
               <div class="col-md-6 text-center">
-                <a href="/change_password">
+                <a href="/account/change_password">
                     <button>CHANGE PASSWORD</button>
                 </a>
               </div>
             </div>
+        </div>
     </div>
 </body>
