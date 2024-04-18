@@ -156,4 +156,9 @@ router.get('/recipe_by_meal_type', async function (req, res) {
   }
 });
 
+router.post('/id_to_database', async function (req, res) {
+  const ID = req.body.recipe_save;
+  console.log(ID);
+});
+
 module.exports = router;
