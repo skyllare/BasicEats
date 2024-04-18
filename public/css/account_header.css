@@ -22,7 +22,20 @@ p {
     display: inline-block;
 }
 
-.saved-recipes,
+.saved-recipes{
+    background: none;
+    border: none;
+    padding: 0;
+    margin-left: 1%;
+    font: inherit;
+    font-size: 16px;
+    color: black;
+    display: block; /* Display each button as a block element */
+    width: 100%; /* Make each button occupy 100% width of its container */
+    text-align: left; /* Align button text to the left */
+    margin-bottom: 10px; /* Add bottom margin to separate buttons */
+}
+
 .myrecipes,
 .admin_page {
     text-decoration: none;

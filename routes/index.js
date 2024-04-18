@@ -181,14 +181,12 @@ router.post('/id_to_database', async function (req, res) {
   }
 });
 
-router.get('/saved_recipes', async function (req, res) {
-  try {
-    const recipes = await Saved_Recipe.getAllRecipes()
-    res.render('saved-recipes', { recipes: recipes});
-    // console.log(data)
-  } catch (err) {
-    res.status(500).send("Error fetching data from API");
-  }
+
+router.get('/saved_recipes', async function (req, res, next) {
+  const user = req.session.user.username;
+  const recipes = await Saved_Recipe.findAll({ where: { username: user } });
+
+  res.render("saved-recipes", { user: user, recipes: recipes });
 });
 
 module.exports = router;
