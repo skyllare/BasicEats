@@ -11,9 +11,15 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link rel="stylesheet" href="./css/calendar.css" />
-    <script src="./javascript/calendar-functions.js"></script>
+
     <title>Basic Eats</title>
 </head>
+<link rel="stylesheet" href="https://mdbootstrap.com/docs/standard/extended/dropdown-checkbox/#">
+<script src="https://mdbootstrap.com/docs/standard/extended/dropdown-checkbox/#"></script>
+<script>
+
+    
+</script>
 
 <body>
     <!--NAVBAR:-->
@@ -24,95 +30,204 @@
                 <!--CALENDAR:-->
                 <div class="left column col-7" style="background-color: #6f8c69; margin-top:0px; ">
                     <h1>Weekly Meal Calendar</h1>
+                    <form action="/calendar/previousWeek" method="POST" style="display:inline-block">
+                    <button type="submit"><image src="images/next.png"
+                                        style="transform: rotate(180deg); display:inline; color: gray; opacity: .4; height: 20px; cursor: pointer;">
+                                    </image></button></form>
+                                    <form action="/calendar/nextWeek" method="POST" style="display:inline-block">
+                                        <button type="submit"><image src="images/next.png"
+                                        style="display:inline; color: gray; opacity: .4; height: 20px; cursor: pointer;">
+                                    </image></button></form>
                     <div class="calendar">
+                        
                         <!--Sunday-->
                         <div class="day">
-                            <button onclick="displayMeal('Sunday', 1)" class="dayType"><u>Sunday</u></button>
-                            <button class="meal1">
-                                <% if (mealsByDay['Sunday'][1].length> 0) { %>
-                                    <%= mealsByDay['Sunday'][1][0].name %>
-                                        <% } else { %>
-                                            no meals
-                                            <% } %>
-                            </button>
-                            <button class="meal2">
-                                <% if (mealsByDay['Sunday'][2].length> 0) { %>
-                                    <%= mealsByDay['Sunday'][2][0].name %>
-                                        <% } else { %>
-                                            no meals
-                                            <% } %>
-                            </button>
+                            <form action="/calendar/updateDay" method="POST">
+                                <button type="submit" name="action" class="dayType" value="Sunday"><u>Sunday</u><p style="font-weight: normal; font-size: 11px">(<%= weekDates[0] %>)</p></button>
+                                <button type="submit" name="action" class="meal1" value="Sunday">
+                                    <% if (mealsByDay['Sunday'][1].length> 0) { %>
+                                        <%= mealsByDay['Sunday'][1][0].name %>
+                                            <% } else { %>
+                                                no meals
+                                                <% } %>
+                                </button>
+                                <button type="submit" name="action" class="meal2" value="Sunday">
+                                    <% if (mealsByDay['Sunday'][2].length> 0) { %>
+                                        <%= mealsByDay['Sunday'][2][0].name %>
+                                            <% } else { %>
+                                                no meals
+                                                <% } %>
+                                </button>
 
-                            <button class="meal3">
-                                <% if (mealsByDay['Sunday'][3].length> 0) { %>
-                                    <%= mealsByDay['Sunday'][3][0].name %>
-                                        <% } else { %>
-                                            no meals
-                                            <% } %>
-                            </button>
-
+                                <button type="submit" name="action" class="meal3" value="Sunday">
+                                    <% if (mealsByDay['Sunday'][3].length> 0) { %>
+                                        <%= mealsByDay['Sunday'][3][0].name %>
+                                            <% } else { %>
+                                                no meals
+                                                <% } %>
+                                </button>
+                            </form>
                         </div>
                         <!--Monday-->
                         <div class="day">
-                            <button class="dayType"><u>Monday</u></button>
-                            <button class="meal1">
+                            <form action="/calendar/updateDay" method="POST">
+                            <button  type="submit" name="action" value = "Monday" class="dayType"><u>Monday</u><p style="font-weight: normal; font-size: 11px">(<%= weekDates[1] %>)</p></button>
+                            <button type="submit" name="action" value = "Monday" class="meal1">
                                 <% if (mealsByDay['Monday'][1].length> 0) { %>
                                     <%= mealsByDay['Monday'][1][0].name %>
                                         <% } else { %>
                                             no meals
                                             <% } %>
                             </button>
-                            <button class="meal2">
+                            <button type="submit" name="action" value = "Monday" class="meal2">
                                 <% if (mealsByDay['Monday'][2].length> 0) { %>
                                     <%= mealsByDay['Monday'][2][0].name %>
                                         <% } else { %>
                                             no meals
                                             <% } %>
                             </button>
-                            <button class="meal3">
+                            <button type="submit" name="action" value = "Monday" class="meal3">
                                 <% if (mealsByDay['Monday'][3].length> 0) { %>
                                     <%= mealsByDay['Monday'][3][0].name %>
                                         <% } else { %>
                                             no meals
                                             <% } %>
-                            </button>
+                            </button></form>
                         </div>
                         <!--Tuesday-->
                         <div class="day">
-                            <div class="dayType"><u>Tuesday</u></div>
-                            <div class="meal1">
-                                Sandwich
-                            </div>
-                            <div class="meal2">Lasagna</div>
-                            <div class="meal3">Chicken Sandwich</div>
+                            <form action="/calendar/updateDay" method="POST">
+                            <button type="submit" name="action" value = "Tuesday" class="dayType"><u>Tuesday</u><p style="font-weight: normal; font-size: 11px">(<%= weekDates[2] %>)</p></button>
+                            <button type="submit" name="action" value = "Tuesday" class="meal1">
+                                <% if (mealsByDay['Tuesday'][1].length> 0) { %>
+                                    <p class="recipeName"><%= mealsByDay['Tuesday'][1][0].name %>
+                                        </p><% } else { %>
+                                            no meals
+                                            <% } %>
+                            </button>
+                            <button type="submit" name="action" value = "Tuesday" class="meal2">
+                                <% if (mealsByDay['Tuesday'][2].length> 0) { %>
+                                    
+                                    <%= mealsByDay['Tuesday'][2][0].name %>
+                                        <% } else { %>
+                                            no meals
+                                            <% } %>
+                            </button>
+                            <button type="submit" name="action" value = "Tuesday" class="meal3">
+                                <% if (mealsByDay['Tuesday'][3].length> 0) { %>
+                                    <%= mealsByDay['Tuesday'][3][0].name %>
+                                        <% } else { %>
+                                            no meals
+                                            <% } %>
+                            </button>
+                        </form>
                         </div>
                         <!--Wednesday-->
                         <div class="day">
-                            <div class="dayType"><u>Wednesday</u></div>
-                            <div class="meal1">Breakfast Burrito</div>
-                            <div class="meal2">Caesar Salad</div>
-                            <div class="meal3">Rice with Greens</div>
+                            <form action="/calendar/updateDay" method="POST">
+                            <button type="submit" name="action" value = "Wednesday" class="dayType"><u>Wednesday</u><p style="font-weight: normal; font-size: 11px">(<%= weekDates[3] %>)</p></button>
+                            <button type="submit" name="action" value = "Wednesday" class="meal1">
+                                <% if (mealsByDay['Wednesday'][1].length> 0) { %>
+                                    <%= mealsByDay['Wednesday'][1][0].name %>
+                                        <% } else { %>
+                                            no meals
+                                            <% } %>
+                            </button>
+                            <button type="submit" name="action" value = "Wednesday" class="meal2">
+                                <% if (mealsByDay['Wednesday'][2].length> 0) { %>
+                                    <%= mealsByDay['Wednesday'][2][0].name %>
+                                        <% } else { %>
+                                            no meals
+                                            <% } %>
+                            </button>
+                            <button type="submit" name="action" value = "Wednesday" class="meal3">
+                                <% if (mealsByDay['Wednesday'][3].length> 0) { %>
+                                    <%= mealsByDay['Wednesday'][3][0].name %>
+                                        <% } else { %>
+                                            no meals
+                                            <% } %>
+                                        </button></form>
                         </div>
                         <!--Thursday-->
                         <div class="day">
-                            <div class="dayType"><u>Thursday</u></div>
-                            <div class="meal1">Potatoes</div>
-                            <div class="meal2">BBQ Chicken</div>
-                            <div class="meal3">Greek Yogurt</div>
+                            <form action="/calendar/updateDay" method="POST">
+                            <button type="submit" name="action" value = "Thursday" class="dayType"><u>Thursday</u><p style="font-weight: normal; font-size: 11px">(<%= weekDates[4] %>)</p></button>
+                            <button type="submit" name="action" value = "Thursday" class="meal1">
+                                <% if (mealsByDay['Thursday'][1].length> 0) { %>
+                                    <%= mealsByDay['Thursday'][1][0].name %>
+                                        <% } else { %>
+                                            no meals
+                                            <% } %>
+                            </button>
+                            <button type="submit" name="action" value = "Thursday" class="meal2">
+                                <% if (mealsByDay['Thursday'][2].length> 0) { %>
+                                    <%= mealsByDay['Thursday'][2][0].name %>
+                                        <% } else { %>
+                                            no meals
+                                            <% } %>
+                            </button>
+                            <button type="submit" name="action" value = "Thursday" class="meal3">
+                                <% if (mealsByDay['Thursday'][3].length> 0) { %>
+                                    <%= mealsByDay['Thursday'][3][0].name %>
+                                        <% } else { %>
+                                            no meals
+                                            <% } %>
+                                        </button>
+                                    </form>
                         </div>
                         <!--Friday-->
                         <div class="day">
-                            <div class="dayType"><u>Friday</u></div>
-                            <div class="meal1">Breakfast Tacos</div>
-                            <div class="meal2">Chicken Caesar Wrap</div>
-                            <div class="meal3">Lemon Salmon</div>
+                            <form action="/calendar/updateDay" method="POST">
+                            <button type="submit" name="action" value = "Friday" class="dayType"><u>Friday</u><p style="font-weight: normal; font-size: 11px">(<%= weekDates[5] %>)</p></button>
+                            <button type="submit" name="action" value = "Friday" class="meal1">
+                                <% if (mealsByDay['Friday'][1].length> 0) { %>
+                                    <%= mealsByDay['Friday'][1][0].name %>
+                                        <% } else { %>
+                                            no meals
+                                            <% } %>
+                            </button>
+                            <button type="submit" name="action" value = "Friday" class="meal2">
+                                <% if (mealsByDay['Friday'][2].length> 0) { %>
+                                    <%= mealsByDay['Friday'][2][0].name %>
+                                        <% } else { %>
+                                            no meals
+                                            <% } %>
+                            </button>
+                            <button type="submit" name="action" value = "Friday" class="meal3">
+                                <% if (mealsByDay['Friday'][3].length> 0) { %>
+                                    <%= mealsByDay['Friday'][3][0].name %>
+                                        <% } else { %>
+                                            no meals
+                                            <% } %>
+                            </button>
+                        </form>
                         </div>
                         <!--Saturday-->
                         <div class="day">
-                            <div class="dayType"><u>Saturday</u></div>
-                            <div class="meal1">Granola</div>
-                            <div class="meal2">Mushroom Soup</div>
-                            <div class="meal3">Chicken Pot Pie</div>
+                            <form action="/calendar/updateDay" method="POST">
+                            <button type="submit" name="action" value = "Saturday" class="dayType"><u>Saturday</u><p style="font-weight: normal; font-size: 11px">(<%= weekDates[6] %>)</p></button>
+                            <button type="submit" name="action" value = "Saturday" class="meal1">
+                                <% if (mealsByDay['Saturday'][1].length> 0) { %>
+                                    <%= mealsByDay['Saturday'][1][0].name %>
+                                        <% } else { %>
+                                            no meals
+                                            <% } %>
+                            </button>
+                            <button type="submit" name="action" value = "Saturday" class="meal2">
+                                <% if (mealsByDay['Saturday'][2].length> 0) { %>
+                                    <%= mealsByDay['Saturday'][2][0].name %>
+                                        <% } else { %>
+                                            no meals
+                                            <% } %>
+                            </button>
+                            <button type="submit" name="action" value = "Saturday" class="meal3">
+                                <% if (mealsByDay['Saturday'][3].length> 0) { %>
+                                    <%= mealsByDay['Saturday'][3][0].name %>
+                                        <% } else { %>
+                                            no meals
+                                            <% } %>
+                            </button>
+                        </form>
                         </div>
                     </div>
                 </div>
@@ -123,52 +238,100 @@
                         <h2>Meal Generator</h2>
 
                         <p>Click the button below to generate weekly meals:</p>
-                        <form action="/submit" method="post">
-                            <select id="dropdown" name="dropdown">
-                                <option value="option1">Regular</option>
-                                <option value="option2">Vegetarian</option>
-                                <option value="option3">Vegan</option>
+                        <form action="/calendar/generate" method="POST">
+                            <label for="dietPreference">Diet Type:</label>
+                            <select id="dietPreference" name="dietPreference">
+                                <option value="">Regular</option>
+                                <option value="vegetarian">Vegetarian</option>
+                                <option value="vegan">Vegan</option>
+                                <option value="gluten free">Gluten Free</option>
                             </select>
                             <br><br>
+                            <label for="minCalories">Minimum Calories:</label>
+                            <input type="number" id="minCalories" name="minCalories" placeholder="Enter minimum calories..." value="0">
+                            <br>
+                            <label for="minCalories">Maximum Calories:</label>
+                            <input type="number" id="maxCalories" name="maxCalories" placeholder="Enter maximum calories..." value="3000">
+                            <br>
+                            <label for="minCalories">Minimum Protein:</label>
+                            <input type="number" id="minProtein" name="minProtein" placeholder="Enter minimum protein..." value="0">
+                            <br><br>
+                            <br><br>
+                            <button class="generate">Generate Weekly Meals</button>
                         </form>
-                        <button class="generate">Generate Meals</button>
-                        <p style="padding-top:15px">Selected Day: <u>Sunday</u></p>
+                        <p style="padding-top:15px">Selected Day: <u><%= dayOfWeek %></u></p>
+                        
                     </div>
                     <!--MealContainer classes-->
                     <!--Breakfast-->
                     <div id="mealDisplay"></div>
+                   
                     <div class="mealContainer" style="margin-top:10px">
                         <div class="mealType" style="">
                             <p style="display:inline">Breakfast</p>
                             <br>
-                            <image class="smallImg" src="images/foodImageHolder.jpg" style="display:inline"></image>
-                            <p style="display:inline">Eggs</p>
+                            <p style="display:inline">
+                             
+                                <% if (selectedDay && selectedDay[1] && selectedDay[1].length> 0) { %>
+                            <%= selectedDay[1][0].name %>
+                            <% } else { %> no meals <% } %>
+                            </p>
                         </div>
                         <div class="col-4" style="display:inline; width: 70%; ">
-                            <p style="display:inline;">1 servings | </p>
-                            <p style="display:inline;">Ingredients: Eggs</p>
+                            <p style="display:inline;"><% if (selectedDay && selectedDay[1] && selectedDay[1].length> 0) { %>
+                                <%= selectedDay[1][0].name %>
+                                <% } %></p>
+                            <p style="display:inline;"><% if (selectedDay && selectedDay[1] && selectedDay[1].length> 0) { %>
+                                <%= selectedDay[1][0].name %>
+                                <% } %></p>
                         </div>
+                        <div style="display:inline; width: 10%; position:relative;">
+                            <form action="/calendar/newMeal" method="POST" style="display:inline-block">
+                                <button
+                            style="background-color:white">
+                            <image src="images/reload.png"
+                                style="display:inline; color: gray; opacity: .4; height: 20px; cursor: pointer;">
+                            </image>
+                        </button></form>
                     </div>
+                    <div style="display:inline; width: 10%; position:relative;">
+                        <form action="/calendar/deleteMeal" method="POST" style="display:inline-block">
+                            <button
+                        style="background-color:white">
+                        <image src="images/trash.png"
+                            style="display:inline; color: gray; opacity: .4; height: 20px; cursor: pointer;">
+                        </image>
+                    </button></form>
+                </div>
+                    </div>
+                    
                     <!--Lunch-->
+                    <% if (selectedDay && selectedDay[2] && selectedDay[2].length> 0) { %>
                     <div class="mealContainer">
                         <div class="mealType">
                             <p style="display:inline">Lunch</p>
                             <br>
                             <image class="smallImg" src="images/foodImageHolder.jpg" style="display:inline"></image>
-                            <p style="display:inline">Meat</p>
+                            <p style="display:inline">
+                                <%= selectedDay[2][0].name %>
+                            </p>
                         </div>
                         <div class="col-4" style="display:inline; width: 70%; ">
                             <p style="display:inline;">1 servings | </p>
                             <p style="display:inline;">Ingredients: Chicken</p>
                         </div>
                     </div>
+                    <% } %>
                     <!--Dinner-->
+                    <% if (selectedDay && selectedDay[3] && selectedDay[3].length> 0) { %>
                     <div class="mealContainer">
                         <div class="mealType">
                             <p style="display:inline">Dinner</p>
                             <br>
                             <image class="smallImg" src="images/foodImageHolder.jpg" style="display:inline"></image>
-                            <p style="display:inline">Curry</p>
+                            <p style="display:inline">
+                                <%= selectedDay[3][0].name %>
+                            </p>
                         </div>
                         <div class="col-4" style="display:inline; width: 70%; ">
                             <div style="display:inline; width: 90%;">
@@ -185,7 +348,51 @@
                             </div>
                         </div>
                     </div>
+                    <% } %>
                 </div>
             </div>
+            <div class="mealContainer" style="margin-top:10px">
+                <div class="mealType" style="">
+                    <p style="display:inline">Breakfast</p>
+                    <br>
+                    <p style="display:inline">
+                     
+                        <% if (selectedDay && selectedDay[1] && selectedDay[1].length> 0) { %>
+                    <%= selectedDay[1][0].name %>
+                    <% } else { %> no meals <% } %>
+                    </p>
+                </div>
+                <div class="col-4" style="display:inline; width: 70%; ">
+                    <p style="display:inline;"><% if (selectedDay && selectedDay[1] && selectedDay[1].length> 0) { %>
+                        <%= selectedDay[1][0].name %>
+                        <% } %></p>
+                    <p style="display:inline;"><% if (selectedDay && selectedDay[1] && selectedDay[1].length> 0) { %>
+                        <%= selectedDay[1][0].name %>
+                        <% } %></p>
+                </div>
+                <div style="display:inline; width: 10%; position:relative;">
+                    <form id="new-meal-form" method="POST" style="display:inline-block">
+                        <button
+                    style="background-color:white">
+                    <image src="images/reload.png"
+                        style="display:inline; color: gray; opacity: .4; height: 20px; cursor: pointer;">
+                    </image>
+                </button></form>
+            </div>
+            <div style="display:inline; width: 10%; position:relative;">
+                <form id="new-meal-form" method="POST" style="display:inline-block">
+                    <button
+                style="background-color:white">
+                <image src="images/trash.png"
+                    style="display:inline; color: gray; opacity: .4; height: 20px; cursor: pointer;">
+                </image>
+            </button></form>
         </div>
+            </div>
+        </div>
+        <script>
+            // JavaScript code to set the form action dynamically
+            document.getElementById('new-meal-form').action = "/calendar/newMeal/<%= selectedDay[1][0] %>";
+          </script>
 </body>
+
