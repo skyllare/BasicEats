@@ -68,7 +68,7 @@ async function setup() {
   ]);
 
   const saladRecipe = await Recipe.create({ username: 'subu', recipename: "salad", ingredients: "lettuce, dressing, croutons, strawberries, candied pecans", recipedesc: "strawberry salad perfect for summer", instructions: "1. Candy pecans \n 2. Clean strawberries and chop them \n 3. Chop lettuce \n 4. Put ingredients in a bowl and toss \n 5. Add dressing", time: 20 });
-  const savedRecipe = await Saved_Recipe.create({recipeid : 661340, username: 'subu'})
+  const savedRecipe = await Saved_Recipe.create({recipeid : 661340, username: 'subu', recipename: 'Spinach Salad with Strawberry Vinaigrette'})
 
   console.log("subu instance created...")
 }
