@@ -159,8 +159,8 @@ router.get('/recipe_by_meal_type', async function (req, res) {
 
 router.post('/id_to_database', async function (req, res) {
   const ID = req.body.recipe_save;
-  const username = req.session.user.username
-  if (username !== null) {
+  if (req.session.user)  {
+    const username = req.session.user.username
     try {
       await Saved_Recipe.create(
         {
@@ -168,10 +168,16 @@ router.post('/id_to_database', async function (req, res) {
           username: username
         }
       )
+      res.locals.msg = "saved_success";
+      res.render("index", { msg: res.locals.msg })
       console.log("recipe saved");
     } catch (error) {
       console.log("recipe could not be saved");
     }
+  }
+  else{
+    res.locals.msg = "saved_no_success";
+      res.render("index", { msg: res.locals.msg })
   }
 });
 
