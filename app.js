@@ -8,6 +8,7 @@ const sequelize = require('./db')
 const User = require('./models/User')
 const MealPlan = require('./models/MealPlan')
 const Recipe = require('./models/Recipe');
+const Saved_Recipe = require('./models/Saved_Recipe');
 
 var indexRouter = require('./routes/index');
 var calendarRouter = require('./routes/calendar');
@@ -67,6 +68,7 @@ async function setup() {
   ]);
 
   const saladRecipe = await Recipe.create({ username: 'subu', recipename: "salad", ingredients: "lettuce, dressing, croutons, strawberries, candied pecans", recipedesc: "strawberry salad perfect for summer", instructions: "1. Candy pecans \n 2. Clean strawberries and chop them \n 3. Chop lettuce \n 4. Put ingredients in a bowl and toss \n 5. Add dressing", time: 20 });
+  const savedRecipe = await Saved_Recipe.create({recipeid : 661340, username: 'subu'})
 
   console.log("subu instance created...")
 }
