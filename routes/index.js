@@ -2,6 +2,7 @@ const { MY_API_KEY } = require('./config');
 
 var express = require('express');
 const User = require('../models/User');
+const Saved_Recipe = require('../models/Saved_Recipe');
 var router = express.Router();
 
 
@@ -10,7 +11,7 @@ router.get('/', function (req, res, next) {
   if (req.query.msg) {
     res.locals.msg = req.query.msg
   }
-  res.render("index", {msg: undefined})
+  res.render("index", { msg: undefined })
 });
 
 router.get('/login', function (req, res, next) {
@@ -64,7 +65,7 @@ router.post('/login', async function (req, res, next) {
     };
 
     res.locals.msg = "login_success";
-    res.render("index", {msg: res.locals.msg})
+    res.render("index", { msg: res.locals.msg })
     console.log("user = " + req.session.user)
     console.log("user found")
   } else {
@@ -158,7 +159,20 @@ router.get('/recipe_by_meal_type', async function (req, res) {
 
 router.post('/id_to_database', async function (req, res) {
   const ID = req.body.recipe_save;
-  console.log(ID);
+  const username = req.session.user.username
+  if (username !== null) {
+    try {
+      await Saved_Recipe.create(
+        {
+          recipeid: ID,
+          username: username
+        }
+      )
+      console.log("recipe saved");
+    } catch (error) {
+      console.log("recipe could not be saved");
+    }
+  }
 });
 
 module.exports = router;
