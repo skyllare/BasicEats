@@ -6,9 +6,7 @@
         </a>
         <div class="row">
             <div class="top-bar">
-                <form action="/saved_recipes" method="get">
-                    <button type="submit" class="saved-recipes">SAVED RECIPES</a></button>
-                </form>
+                <a href="/saved_recipes" class="saved-recipes">SAVED RECIPES</a>
                 <a href="/account/myrecipes" class="myrecipes">MY RECIPES</a>
                 <% if(admin) { %>
                     <a href="/account/admin" class="admin_page">ADMIN</a>
