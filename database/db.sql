@@ -14,5 +14,5 @@ INSERT INTO MEALPLAN VALUES ( 'subu', '2024-04-11', 'Friday', 1, "eggs" );
 INSERT INTO MEALPLAN VALUES ( 'subu', '2024-04-12', 'Friday', 1, "friday" );CREATE TABLE IF NOT EXISTS RECIPE ( recipeid INTEGER PRIMARY KEY NOT NULL AUTOINCREMENT, username TEXT NOT NULL, recipename TEXT NOT NULL, ingredients TEXT NOT NULL, recipedesc TEXT, instructions TEXT NOT NULL, time INTEGER );
 
 INSERT INTO RECIPE VALUES(1, 'subu', 'salad', 'lettuce, dressing, croutons, strawberries, candied pecans', 'strawberry salad perfect for summer', 'instructions: 1. Candy pecans \n 2. Clean strawberries and chop them \n 3. Chop lettuce \n 4. Put ingredients in a bowl and toss \n 5. Add dressing', 20 );
-INSERT INTO SAVED_RECIPE VALUES (661340, 'subu', 'salad');
+INSERT INTO SAVED_RECIPE VALUES (661340, 'subu', 'Spinach Salad with Strawberry Vinaigrette');
 
