@@ -27,11 +27,11 @@ Saved_Recipe.init({
   recipeid: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    autoIncrement: true,
     allowNull: false,
   },
   username: {
     type: DataTypes.STRING,
+    primaryKey: true,
     allowNull: false
   }
 }, {
