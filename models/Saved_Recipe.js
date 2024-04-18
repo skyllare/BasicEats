@@ -35,7 +35,12 @@ Saved_Recipe.init({
     type: DataTypes.STRING,
     primaryKey: true,
     allowNull: false
+  },
+  recipename: {
+    type: DataTypes.STRING,
+    allowNull: true
   }
+
 }, {
   sequelize, 
   modelName: 'Saved_Recipe'

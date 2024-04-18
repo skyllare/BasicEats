@@ -158,14 +158,17 @@ router.get('/recipe_by_meal_type', async function (req, res) {
 });
 
 router.post('/id_to_database', async function (req, res) {
-  const ID = req.body.recipe_save;
+  const recipeData = req.body.recipe_save.split('|'); 
+  const ID = recipeData[0];
+  const title = recipeData[1];
   if (req.session.user)  {
     const username = req.session.user.username
     try {
       await Saved_Recipe.create(
         {
           recipeid: ID,
-          username: username
+          username: username,
+          recipetitle: title
         }
       )
       res.locals.msg = "saved_success";
