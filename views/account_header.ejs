@@ -6,12 +6,14 @@
         </a>
         <div class="row">
             <div class="top-bar">
-                <a href="/account/saved-recipes" class="saved-recipes">SAVED RECIPES</a>
+                <form action="/saved_recipes" method="get">
+                    <button type="submit" class="saved-recipes">SAVED RECIPES</a></button>
+                </form>
                 <a href="/account/myrecipes" class="myrecipes">MY RECIPES</a>
                 <% if(admin) { %>
                     <a href="/account/admin" class="admin_page">ADMIN</a>
-                <% } %>
-                <a href="/account" class="account">ACCOUNT</a>
+                    <% } %>
+                        <a href="/account" class="account">ACCOUNT</a>
             </div>
         </div>
     </div>

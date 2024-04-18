@@ -12,15 +12,17 @@ class Saved_Recipe extends Model {
             return null
         }
     }
-    static async getAllRecipes() {
+    static async getAllRecipes(username) {
       try {
-          const recipes = await Saved_Recipe.findAll();
-          return recipes;
+        const recipes = await Saved_Recipe.findAll({
+          where: { username: username }
+        });
+        return recipes;
       } catch (error) {
-          console.log(error);
-          return [];
+        console.log(error);
+        return [];
       }
-  }
+    }
 }
 
 Saved_Recipe.init({
