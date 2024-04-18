@@ -14,7 +14,7 @@ class Saved_Recipe extends Model {
     }
 }
 
-Recipe.init({
+Saved_Recipe.init({
   recipeid: {
     type: DataTypes.INTEGER,
     primaryKey: true,

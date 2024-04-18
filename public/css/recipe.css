@@ -48,7 +48,7 @@ i {
     display: block;
 }
 
-.recipe-save {
+.recipe_save {
     display: inline-flex;
     align-items: center;
     padding: 6px 14px 6px 12px;
