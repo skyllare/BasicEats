@@ -1,7 +1,7 @@
 const { MY_API_KEY } = require('./config');
-
 var express = require('express');
 const User = require('../models/User');
+const Recipe = require('../models/Recipe');
 const Saved_Recipe = require('../models/Saved_Recipe');
 var router = express.Router();
 
@@ -158,12 +158,12 @@ router.get('/recipe_by_meal_type', async function (req, res) {
 });
 
 router.post('/id_to_database', async function (req, res) {
-  const recipeData = req.body.recipe_save.split('|'); 
+  const recipeData = req.body.recipe_save.split('|');
   console.log(recipeData)
   const ID = recipeData[0];
   const title = recipeData[1];
 
-  if (req.session.user)  {
+  if (req.session.user) {
     const username = req.session.user.username
     try {
       await Saved_Recipe.create(
@@ -180,9 +180,9 @@ router.post('/id_to_database', async function (req, res) {
       console.log("recipe could not be saved");
     }
   }
-  else{
+  else {
     res.locals.msg = "saved_no_success";
-      res.render("index", { msg: res.locals.msg })
+    res.render("index", { msg: res.locals.msg })
   }
 });
 
@@ -192,6 +192,20 @@ router.get('/saved_recipes', async function (req, res, next) {
   const recipes = await Saved_Recipe.findAll({ where: { username: user.username } });
 
   res.render("saved-recipes", { user: user, recipes: recipes });
+});
+
+
+router.get('/userrecipe_by_id', async function (req, res) {
+  const user = req.session.user;
+
+  // If user is not logged in, redirect to login page
+  if (!user) {
+    return res.redirect('/login');
+  }
+  
+  const recipeid = req.query.ID;
+  const usermade_recipe = await Recipe.findRecipe(recipeid)
+  res.render('user_recipe', { recipe: usermade_recipe, user: user });
 });
 
 module.exports = router;
