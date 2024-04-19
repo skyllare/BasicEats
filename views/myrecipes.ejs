@@ -23,34 +23,31 @@
     <section id="recipe-details">
       <div class="container-lg">
         <div class="p-lg-2 text-center bg-light">
-          <h1>Recipes</h1>
+          <h1>My Recipes</h1>
         </div>
         <table class="table table-hover" id="recipestable">
           <thead>
             <tr>
-              <th scope="col">Recipe</th>
-              <th scope="col">Description</th>
+              <th scope="col">Recipe Name</th>
+              <th scope="col">Recipe Details</th>
             </tr>
           </thead>
-          <tbody>
 
+          <tbody>
             <% for (let recipe of recipes) { %>
               <tr>
-                <td>
-                  <%= recipe.recipename %>
-                </td>
-                <td>
-                  <%= recipe.recipedesc %>
-                </td>
+                <td><%= recipe.recipename %></td>
+                <td><a href="/recipe_by_id?ID=<%= recipe.recipeid %>">View Details</a></td>
               </tr>
-              <% } %>
-
+              
+            <% } %> 
           </tbody>
         </table>
         <%if (!recipes || recipes.length==0) { %>
           <p> No recipes to list! </p>
           <% } %>
       </div>
+
     </section>
     <br>
     <br>
@@ -63,8 +60,7 @@
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Description</label>
-            <textarea name="recipedesc" type="text" class="form-control" id="recipedesc"
-              placeholder=""></textarea>
+            <textarea name="recipedesc" type="text" class="form-control" id="recipedesc" placeholder=""></textarea>
           </div>
           <div class="form-group">
             <label for="exampleFormControlInput1">Ingredients *</label>
