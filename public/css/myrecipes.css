@@ -1,0 +1,24 @@
+.number-input input[type="number"] {
+    padding-right: 10px;
+}
+
+.form-group input[type="number"] {
+    width: 20%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+.form-group input[type="submit"] {
+    background-color: #6f9667;
+    color: #fff;
+    cursor: pointer;
+    width: 40%;
+    margin-top: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+.form-group input[type="submit"]:hover {
+    background-color: #56784e;
+  }

@@ -1,50 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link rel="stylesheet" href="./css/myrecipes.css" />
-    <title>My Recipes</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link rel="stylesheet" href="/css/myrecipes.css" />
+  <script src="/javascript/myrecipe.js"></script>
+  <title>My Recipes</title>
 </head>
 
 <body>
-    <%- include('account_header', { admin: user.admin }) %>
+  <%- include('account_header', { admin: user.admin }) %>
     <section id="recipe-details">
-        <div class="container-lg">
-          <div class="p-lg-2 text-center bg-light">
-            <h1>Recipes</h1>
-          </div>  
-          <table class="table table-hover" id="recipestable">
-            <thead>
-              <tr>
-                <th scope="col">Recipe</th>
-                <th scope="col">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              
-                <% for (let recipe of recipes) { %>
-                <tr>
-                  <td><%= recipe.recipename %></td>
-                  <td><%= recipe.recipedesc %></td>
-                </tr>
-              <% } %> 
-           
-            </tbody>
-          </table>
-          <%if (!recipes || recipes.length == 0) { %>
-            <p> No recipes to list! </p>
-            <% } %>
+      <div class="container-lg">
+        <div class="p-lg-2 text-center bg-light">
+          <h1>Recipes</h1>
         </div>
+        <table class="table table-hover" id="recipestable">
+          <thead>
+            <tr>
+              <th scope="col">Recipe</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <% for (let recipe of recipes) { %>
+              <tr>
+                <td>
+                  <%= recipe.recipename %>
+                </td>
+                <td>
+                  <%= recipe.recipedesc %>
+                </td>
+              </tr>
+              <% } %>
+
+          </tbody>
+        </table>
+        <%if (!recipes || recipes.length==0) { %>
+          <p> No recipes to list! </p>
+          <% } %>
+      </div>
+    </section>
+    <br>
+    <br>
+    <section id="recipe-form">
+      <div class="container-lg">
+        <form method="post" action="/account/create">
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Recipe Name * </label>
+            <input required name="recipename" type="text" class="form-control" id="recipename" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Description</label>
+            <textarea name="recipedesc" type="text" class="form-control" id="recipedesc"
+              placeholder=""></textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Ingredients *</label>
+            <textarea required name="ingredients" type="text" class="form-control" id="ingredients"
+              placeholder=""></textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Steps *</label>
+            <textarea required name="instructions" type="text" class="form-control" id="instructions"
+              placeholder=""></textarea>
+          </div>
+          <div class="form-group">
+            <label for="minutes">Minutes</label>
+            <div class="number-input">
+              <input type="number" id="minutes" name="minutes" min="0" max="500" value="30" step="1">
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="submit" value="ADD RECIPE" class="btn">
+          </div>
+        </form>
+      </div>
     </section>
 </body>
+
 </html>
