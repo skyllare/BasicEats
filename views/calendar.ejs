@@ -266,133 +266,143 @@
                     <!--Breakfast-->
                     <div id="mealDisplay"></div>
                    
-                    <div class="mealContainer" style="margin-top:10px">
-                        <div class="mealType" style="">
-                            <p style="display:inline">Breakfast</p>
-                            <br>
-                            <p style="display:inline">
-                             
-                                <% if (selectedDay && selectedDay[1] && selectedDay[1].length> 0) { %>
-                            <%= selectedDay[1][0].name %>
-                            <% } else { %> no meals <% } %>
-                            </p>
-                        </div>
-                        <div class="col-4" style="display:inline; width: 70%; ">
-                            <p style="display:inline;"><% if (selectedDay && selectedDay[1] && selectedDay[1].length> 0) { %>
-                                <%= selectedDay[1][0].name %>
-                                <% } %></p>
-                            <p style="display:inline;"><% if (selectedDay && selectedDay[1] && selectedDay[1].length> 0) { %>
-                                <%= selectedDay[1][0].name %>
-                                <% } %></p>
-                        </div>
-                        <div style="display:inline; width: 10%; position:relative;">
-                            <form action="/calendar/newMeal" method="POST" style="display:inline-block">
-                                <button
-                            style="background-color:white">
-                            <image src="images/reload.png"
-                                style="display:inline; color: gray; opacity: .4; height: 20px; cursor: pointer;">
-                            </image>
-                        </button></form>
-                    </div>
-                    <div style="display:inline; width: 10%; position:relative;">
-                        <form action="/calendar/deleteMeal" method="POST" style="display:inline-block">
-                            <button
-                        style="background-color:white">
-                        <image src="images/trash.png"
-                            style="display:inline; color: gray; opacity: .4; height: 20px; cursor: pointer;">
-                        </image>
-                    </button></form>
-                </div>
-                    </div>
+  
                     
-                    <!--Lunch-->
-                    <% if (selectedDay && selectedDay[2] && selectedDay[2].length> 0) { %>
-                    <div class="mealContainer">
-                        <div class="mealType">
-                            <p style="display:inline">Lunch</p>
-                            <br>
-                            <image class="smallImg" src="images/foodImageHolder.jpg" style="display:inline"></image>
-                            <p style="display:inline">
-                                <%= selectedDay[2][0].name %>
-                            </p>
-                        </div>
-                        <div class="col-4" style="display:inline; width: 70%; ">
-                            <p style="display:inline;">1 servings | </p>
-                            <p style="display:inline;">Ingredients: Chicken</p>
-                        </div>
-                    </div>
-                    <% } %>
-                    <!--Dinner-->
-                    <% if (selectedDay && selectedDay[3] && selectedDay[3].length> 0) { %>
-                    <div class="mealContainer">
-                        <div class="mealType">
-                            <p style="display:inline">Dinner</p>
-                            <br>
-                            <image class="smallImg" src="images/foodImageHolder.jpg" style="display:inline"></image>
-                            <p style="display:inline">
-                                <%= selectedDay[3][0].name %>
-                            </p>
-                        </div>
-                        <div class="col-4" style="display:inline; width: 70%; ">
-                            <div style="display:inline; width: 90%;">
-                                <p style="display:inline;">2 servings | </p>
-                                <p style="display:inline;">Ingredients: Chicken, curry</p>
-                            </div>
-
-                            <div style="display:inline; width: 10%; position:relative;"><button
-                                    style="background-color:white">
-                                    <image src="images/reload.png"
-                                        style="display:inline; color: gray; opacity: .4; height: 20px; cursor: pointer;">
-                                    </image>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <% } %>
+                    
                 </div>
             </div>
             <div class="mealContainer" style="margin-top:10px">
-                <div class="mealType" style="">
-                    <p style="display:inline">Breakfast</p>
+                <div class="mealType" style="width:30%">
+                    <p style="display:inline"><b>Breakfast</b></p>
                     <br>
                     <p style="display:inline">
                      
                         <% if (selectedDay && selectedDay[1] && selectedDay[1].length> 0) { %>
-                    <%= selectedDay[1][0].name %>
+                    <u><%= selectedDay[1][0].name %></u>
                     <% } else { %> no meals <% } %>
                     </p>
                 </div>
-                <div class="col-4" style="display:inline; width: 70%; ">
-                    <p style="display:inline;"><% if (selectedDay && selectedDay[1] && selectedDay[1].length> 0) { %>
-                        <%= selectedDay[1][0].name %>
-                        <% } %></p>
-                    <p style="display:inline;"><% if (selectedDay && selectedDay[1] && selectedDay[1].length> 0) { %>
-                        <%= selectedDay[1][0].name %>
-                        <% } %></p>
+                <div style="justify-content: center; position:absolute; display:flex; width: 30%; position:relative;">
+                    <% if (selectedDay && selectedDay[1] && selectedDay[1].length> 0) { %>
+                    <a id="dynamicLink1" href="#">Go to Recipe</a>
+                    <% } %>
                 </div>
-                <div style="display:inline; width: 10%; position:relative;">
-                    <form id="new-meal-form" method="POST" style="display:inline-block">
+                    <div style="justify-content: center; display:flex; width: 30%; ">
+                        <form id="new-meal-form" method="POST" style="display:inline-block">
+                            <button
+                            type="submit" name="mealType" value="1" style="background-color:white">
+                        <image src="images/reload.png"
+                            style="display:inline; color: gray; opacity: .4; height: 20px; cursor: pointer;">
+                        </image>
+                    </button></form>
+                </div>
+                <div style="justify-content: center; display:flex; width: 30%; ">
+                    <form action="/calendar/deleteMeal" method="POST" style="display:inline-block">
                         <button
-                    style="background-color:white">
-                    <image src="images/reload.png"
+                    type="submit" name="mealType" style="background-color:white" value="1">
+                    <image src="images/trash.png"
                         style="display:inline; color: gray; opacity: .4; height: 20px; cursor: pointer;">
                     </image>
                 </button></form>
+                </div>
             </div>
-            <div style="display:inline; width: 10%; position:relative;">
-                <form id="new-meal-form" method="POST" style="display:inline-block">
-                    <button
-                style="background-color:white">
-                <image src="images/trash.png"
-                    style="display:inline; color: gray; opacity: .4; height: 20px; cursor: pointer;">
-                </image>
-            </button></form>
-        </div>
+            <div class="mealContainer" style="">
+                <div class="mealType" style="width:30%">
+                    <p style="display:inline"><b>Lunch</b></p>
+                    <br>
+                    <p style="display:inline">
+                     
+                        <% if (selectedDay && selectedDay[2] && selectedDay[2].length> 0) { %>
+                    <u><%= selectedDay[2][0].name %></u>
+                    <% } else { %> no meals <% } %>
+                    </p>
+                </div>
+                <div style="justify-content: center; position:absolute; display:flex; width: 30%; position:relative;">
+                    <% if (selectedDay && selectedDay[2] && selectedDay[2].length> 0) { %>
+                    <a id="dynamicLink2" href="#">Go to Recipe</a>
+                    <% } %>
+                </div>
+                    <div style="justify-content: center; display:flex; width: 30%; ">
+                        <form id="new-meal-form" method="POST" style="display:inline-block">
+                            <button
+                            type="submit" name="mealType" value="2" style="background-color:white">
+                        <image src="images/reload.png"
+                            style="display:inline; color: gray; opacity: .4; height: 20px; cursor: pointer;">
+                        </image>
+                    </button></form>
+                </div>
+                <div style="justify-content: center; display:flex; width: 30%; ">
+                    <form action="/calendar/deleteMeal" method="POST" style="display:inline-block">
+                        <button
+                    type="submit" name="mealType" style="background-color:white" value="2">
+                    <image src="images/trash.png"
+                        style="display:inline; color: gray; opacity: .4; height: 20px; cursor: pointer;">
+                    </image>
+                </button></form>
+                </div>
+            </div>
+            <div class="mealContainer" style="">
+                <div class="mealType" style="width:30%">
+                    <p style="display:inline"><b>Dinner</b></p>
+                    <br>
+                    <p style="display:inline">
+                     
+                        <% if (selectedDay && selectedDay[3] && selectedDay[3].length> 0) { %>
+                    <u><%= selectedDay[3][0].name %></u>
+                    <% } else { %> no meals <% } %>
+                    </p>
+                </div>
+                <div style="justify-content: center; position:absolute; display:flex; width: 30%; position:relative;">
+                    <% if (selectedDay && selectedDay[3] && selectedDay[3].length> 0) { %>
+                    <a id="dynamicLink3" href="#">Go to Recipe</a>
+                    <% } %>
+                </div>
+                    <div style="justify-content: center; display:flex; width: 30%; ">
+                        <form id="new-meal-form" method="POST" style="display:inline-block">
+                            <button
+                            type="submit" name="mealType" value="3" style="background-color:white">
+                        <image src="images/reload.png"
+                            style="display:inline; color: gray; opacity: .4; height: 20px; cursor: pointer;">
+                        </image>
+                    </button></form>
+                </div>
+                <div style="justify-content: center; display:flex; width: 30%; ">
+                    <form action="/calendar/deleteMeal" method="POST" style="display:inline-block">
+                        <button
+                    type="submit" name="mealType" style="background-color:white" value="3">
+                    <image src="images/trash.png"
+                        style="display:inline; color: gray; opacity: .4; height: 20px; cursor: pointer;">
+                    </image>
+                </button></form>
+                </div>
             </div>
         </div>
+        
         <script>
-            // JavaScript code to set the form action dynamically
-            document.getElementById('new-meal-form').action = "/calendar/newMeal/<%= selectedDay[1][0] %>";
-          </script>
+            <% if (selectedDay && selectedDay[1] && selectedDay[1].length> 0) { %>
+
+            // Get the link element by its ID
+            var link = document.getElementById('dynamicLink1');
+            
+            // Set the href attribute to the URL with the recipe ID
+            link.href = "/recipe_by_id?ID=" + <%= selectedDay[1][0].recipeid %>;
+            <% } %>
+            <% if (selectedDay && selectedDay[2] && selectedDay[2].length> 0) { %>
+
+            // Get the link element by its ID
+            var link = document.getElementById('dynamicLink2');
+
+            // Set the href attribute to the URL with the recipe ID
+            link.href = "/recipe_by_id?ID=" + <%= selectedDay[2][0].recipeid %>;
+            <% } %>
+            <% if (selectedDay && selectedDay[3] && selectedDay[3].length> 0) { %>
+
+            // Get the link element by its ID
+            var link = document.getElementById('dynamicLink3');
+
+            // Set the href attribute to the URL with the recipe ID
+            link.href = "/recipe_by_id?ID=" + <%= selectedDay[3][0].recipeid %>;
+            <% } %>
+        </script>
 </body>
 

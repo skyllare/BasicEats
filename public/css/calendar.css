@@ -142,7 +142,6 @@ p {
 .mealType {
     display: inline;
     text-align: left;
-    width: 30%;
     height: 75px;
     border: 1px solid #ccc;
     margin: 0px;

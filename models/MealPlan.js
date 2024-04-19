@@ -25,6 +25,7 @@ MealPlan.init({
   },
   day: {
     type: DataTypes.DATEONLY,
+    primaryKey: true,
     allowNull: false
   },
   weekday: {
@@ -33,11 +34,16 @@ MealPlan.init({
   },
   mealNum: {
     type: DataTypes.INTEGER,
+    primaryKey: true,
     allowNull: false
   },
   name: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  recipeid: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
   }
 }, {
   sequelize, 
