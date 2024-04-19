@@ -287,15 +287,14 @@
                     <a id="dynamicLink1" href="#">Go to Recipe</a>
                     <% } %>
                 </div>
-                    <div style="justify-content: center; display:flex; width: 30%; ">
-                        <form id="new-meal-form" method="POST" style="display:inline-block">
-                            <button
-                            type="submit" name="mealType" value="1" style="background-color:white">
-                        <image src="images/reload.png"
-                            style="display:inline; color: gray; opacity: .4; height: 20px; cursor: pointer;">
-                        </image>
-                    </button></form>
-                </div>
+                <div style="justify-content: center; display:flex; width: 30%; ">
+                    <form action="/calendar/newMeal" method="POST" style="display:inline-block">
+                        <button
+                    type="submit" name="mealType" style="background-color:white" value="1">
+                    <image src="images/reload.png"
+                        style="display:inline; color: gray; opacity: .4; height: 20px; cursor: pointer;">
+                    </image>
+                </button></form></div>
                 <div style="justify-content: center; display:flex; width: 30%; ">
                     <form action="/calendar/deleteMeal" method="POST" style="display:inline-block">
                         <button
@@ -322,15 +321,14 @@
                     <a id="dynamicLink2" href="#">Go to Recipe</a>
                     <% } %>
                 </div>
-                    <div style="justify-content: center; display:flex; width: 30%; ">
-                        <form id="new-meal-form" method="POST" style="display:inline-block">
-                            <button
-                            type="submit" name="mealType" value="2" style="background-color:white">
-                        <image src="images/reload.png"
-                            style="display:inline; color: gray; opacity: .4; height: 20px; cursor: pointer;">
-                        </image>
-                    </button></form>
-                </div>
+                <div style="justify-content: center; display:flex; width: 30%; ">
+                    <form action="/calendar/newMeal" method="POST" style="display:inline-block">
+                        <button
+                    type="submit" name="mealType" style="background-color:white" value="2">
+                    <image src="images/reload.png"
+                        style="display:inline; color: gray; opacity: .4; height: 20px; cursor: pointer;">
+                    </image>
+                </button></form></div>
                 <div style="justify-content: center; display:flex; width: 30%; ">
                     <form action="/calendar/deleteMeal" method="POST" style="display:inline-block">
                         <button
@@ -341,7 +339,7 @@
                 </button></form>
                 </div>
             </div>
-            <div class="mealContainer" style="">
+            <div class="mealContainer" style="margin-bottom: 30px;">
                 <div class="mealType" style="width:30%">
                     <p style="display:inline"><b>Dinner</b></p>
                     <br>
@@ -357,14 +355,14 @@
                     <a id="dynamicLink3" href="#">Go to Recipe</a>
                     <% } %>
                 </div>
-                    <div style="justify-content: center; display:flex; width: 30%; ">
-                        <form id="new-meal-form" method="POST" style="display:inline-block">
-                            <button
-                            type="submit" name="mealType" value="3" style="background-color:white">
-                        <image src="images/reload.png"
-                            style="display:inline; color: gray; opacity: .4; height: 20px; cursor: pointer;">
-                        </image>
-                    </button></form>
+            <div style="justify-content: center; display:flex; width: 30%; ">
+                <form action="/calendar/newMeal" method="POST" style="display:inline-block">
+                    <button
+                type="submit" name="mealType" style="background-color:white" value="3">
+                <image src="images/reload.png"
+                    style="display:inline; color: gray; opacity: .4; height: 20px; cursor: pointer;">
+                </image>
+            </button></form>
                 </div>
                 <div style="justify-content: center; display:flex; width: 30%; ">
                     <form action="/calendar/deleteMeal" method="POST" style="display:inline-block">

@@ -26,19 +26,41 @@
         </div>
         <% }
     %>
+    <% if(msg && msg==="saved_success" ) { %>
+        <div class="alert alert-success alert-dismissible fade show fixed-top" style="opacity: 0.6; padding-bottom: 1px;" role="alert">
+          <p class="" style="font-size: 15px;">RECIPE SAVED SUCCESSFULLY</p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <% }
+    %>
+    <% if(msg && msg==="saved_no_success" ) { %>
+        <div class="alert alert-success alert-dismissible fade show fixed-top" style="opacity: 0.6; padding-bottom: 1px;" role="alert">
+          <p class="" style="font-size: 15px;">LOG IN TO SAVE RECIPE</p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <% }
+    %>
     <%- include('header.ejs') %>
     
     <div class="container">
         <div class="row">
             <div class="col-8">
-                <img class="chili" src="images/chili.jpg" alt="" />
+                <a href="/recipe_by_id?ID=1697611">
+                    <img class="chili" src="images/chili.jpg" alt="" />
+                </a>
             </div>
             <div class="col-4">
                 <div class="top-recipes">
                     <p class="top-recipes-title">Top Recipes</p>
-                    <img class="top-recipe-1" src="images/top-recipe-placeholder.jpg" alt="" />
-                    <p class="top-recipe-txt-1">Sliders</p>
-                </div>
+                    <a href="/recipe_by_id?ID=642129">
+                        <img class="top-recipe-1" src="images/springrolls.jpg" alt="springrolls" />
+                        <p class="top-recipe-txt-1">Easy To Make Spring Rolls</p>
+                    </a>
+                    <a href="/recipe_by_id?ID=648275">
+                        <img class="top-recipe-2" src="images/italian_tomato_mozzarella_caprese.jpg" alt="italian tomato mozzarella caprese" />
+                        <p class="top-recipe-txt-2">Italian Tomato Mozzarella Caprese</p>
+                    </a>
+                    </div>
             </div>
         </div>
     </div>
@@ -46,18 +68,27 @@
     <div class="container">
         <div class="row">
             <div class="col-4">
-                <img class="editors-pic-img-1" src="/images/top-recipe-placeholder.jpg" alt="" />
-                <p class="editors-pic-txt-1">Recipe Name</p>
+                <a href="/recipe_by_id?ID=715540">
+                    <img class="editors-pic-img-1" src="images/summer-berry-salad.jpg" alt="summer berry salad" />
+                    <p class="editors-pic-txt-1">Summer Berry Salad</p>
+                </a>
             </div>
             <div class="col-4">
-                <img class="editors-pic-img-2" src="images/top-recipe-placeholder.jpg" alt="" />
-                <p class="editors-pic-txt-2">Recipe Name</p>
+                <a href="/recipe_by_id?ID=643450">
+                    <img class="editors-pic-img-2" src="images/cherry_scone.jpg" alt="cherry scone" />
+                    <p class="editors-pic-txt-2">Fresh Cherry Scones</p>
+                </a>
             </div>
             <div class="col-4">
-                <img class="editors-pic-img-3" src="images/top-recipe-placeholder.jpg" alt="" />
-                <p class="editors-pic-txt-3">Recipe Name</p>
+                <a href="/recipe_by_id?ID=637591">
+                    <img class="editors-pic-img-2" src="images/cheese_tort.jpg" alt="cheese tortellini" />
+                    <p class="editors-pic-txt-2">Cheese Tortellini Alfredo</p>
+                </a>
             </div>
         </div>
     </div>
     </div>
+    <br>
+    <br>
+    <br>
 </body>

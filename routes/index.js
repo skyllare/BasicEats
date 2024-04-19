@@ -2,6 +2,7 @@ const { MY_API_KEY } = require('./config');
 
 var express = require('express');
 const User = require('../models/User');
+const Saved_Recipe = require('../models/Saved_Recipe');
 var router = express.Router();
 
 
@@ -10,7 +11,7 @@ router.get('/', function (req, res, next) {
   if (req.query.msg) {
     res.locals.msg = req.query.msg
   }
-  res.render("index", {msg: undefined})
+  res.render("index", { msg: undefined })
 });
 
 router.get('/login', function (req, res, next) {
@@ -64,7 +65,7 @@ router.post('/login', async function (req, res, next) {
     };
 
     res.locals.msg = "login_success";
-    res.render("index", {msg: res.locals.msg})
+    res.render("index", { msg: res.locals.msg })
     console.log("user = " + req.session.user)
     console.log("user found")
   } else {
@@ -154,6 +155,43 @@ router.get('/recipe_by_meal_type', async function (req, res) {
   } catch (err) {
     res.status(500).send("Error fetching data from API");
   }
+});
+
+router.post('/id_to_database', async function (req, res) {
+  const recipeData = req.body.recipe_save.split('|'); 
+  console.log(recipeData)
+  const ID = recipeData[0];
+  const title = recipeData[1];
+
+  if (req.session.user)  {
+    const username = req.session.user.username
+    try {
+      await Saved_Recipe.create(
+        {
+          recipeid: ID,
+          username: username,
+          recipename: title
+        }
+      )
+      res.locals.msg = "saved_success";
+      res.render("index", { msg: res.locals.msg })
+      console.log("recipe saved");
+    } catch (error) {
+      console.log("recipe could not be saved");
+    }
+  }
+  else{
+    res.locals.msg = "saved_no_success";
+      res.render("index", { msg: res.locals.msg })
+  }
+});
+
+
+router.get('/saved_recipes', async function (req, res, next) {
+  const user = req.session.user.username;
+  const recipes = await Saved_Recipe.findAll({ where: { username: user } });
+
+  res.render("saved-recipes", { user: user, recipes: recipes });
 });
 
 module.exports = router;

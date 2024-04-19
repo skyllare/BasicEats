@@ -122,7 +122,7 @@ router.post('/generate', async function(req, res, next) {
   //console.log(mealsByDay)
   const user = req.session.user;
   const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  const mealNumType = ['breakfast', '', 'main course']
+  const mealNumType = ['breakfast', 'main+course', 'main+course']
   const dietPreference = req.body.dietPreference;
   const minCalories = req.body.minCalories;
   const maxCalories = req.body.maxCalories;
@@ -138,7 +138,7 @@ router.post('/generate', async function(req, res, next) {
       
        for (let i = 1; i <= 3; i++) {
 
-        const apiUrl = `https://api.spoonacular.com/recipes/random?apiKey=${MY_API_KEY}&tags=${dietPreference}&minCalories=${req.body.minCalories}&maxCalories=${req.body.maxCalories}&minProtein=${req.body.minProtein}&type=${mealNumType[i-1]}`;        
+        const apiUrl = `https://api.spoonacular.com/recipes/random?apiKey=${MY_API_KEY}&tags=${dietPreference},${mealNumType[i-1]}&minCalories=${req.body.minCalories}&maxCalories=${req.body.maxCalories}&minProtein=${req.body.minProtein}&type=${mealNumType[i-1]}`;        
         const response = await fetch(apiUrl);
         console.log(response)
         const data = await response.json();
@@ -170,22 +170,24 @@ router.post('/generate', async function(req, res, next) {
           });
           console.log('New meal created:', newMeal);
         }
-        const existingRecipe = await Recipe.findOne({
-          where: {
-            recipeid: randomRecipe.id
-          }
-        });
-        if (!existingMeal) {
-          const newRecipe = await Recipe.create({
-            recipeid: randomRecipe.id,
-            username: 'placement',
-            recipename: randomRecipe.name,
-            ingredients: randomRecipe.ingredients,
-            recipedesc: randomRecipe.description,
-            instructions: randomRecipe.instructions,
-            time: randomRecipe.time
-          });
-        } 
+        
+        // const existingRecipe = await Recipe.findOne({
+        //   where: {
+        //     recipeid: randomRecipe.id
+        //   }
+        // });
+        // if (!existingMeal) {
+        //   const newRecipe = await Recipe.create({
+        //     recipeid: randomRecipe.id,
+        //     username: 'placement',
+        //     recipename: randomRecipe.title,
+        //     //ingredients: randomRecipe.extendedIngredients,
+        //     ingredients: 'placeholder',
+        //     recipedesc: randomRecipe.summary,
+        //     instructions: randomRecipe.instructions,
+        //     time: randomRecipe.readyInMinutes
+        //   });
+        // } 
       }
     }
 
@@ -225,61 +227,79 @@ router.post('/nextWeek', (req, res) => {
 
 
 
-router.post('/newMeal/:mealId', async function(req, res, next) {
+router.post('/newMeal', async function(req, res, next) {
   console.log('THIS IS A TEST')
+  const weekDates = getWeekDates();
   //console.log(mealsByDay)
   const user = req.session.user;
-
-
+  console.log(req.body.mealType)
+  let num = parseInt(req.body.mealType);
+  console.log(selectedDay[num])
+  const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  let date;
+console.log(selectedDay[num].length)
   try {
-       
-        const apiUrl = `https://api.spoonacular.com/recipes/random?apiKey=${MY_API_KEY}`;        
+       if (selectedDay[num].length < 1) {
+        const dayIndex = weekDays.indexOf(dayOfWeek);
+        console.log(dayIndex)
+        date = weekDates[dayIndex];
+      }
+      else {
+        date = selectedDay[num][0].day;
+      }
+      console.log(date)
+        const apiUrl = `https://api.spoonacular.com/recipes/random?apiKey=${MY_API_KEY}&type=main+course&tags=main+course`;        
         const response = await fetch(apiUrl);
         console.log(response)
         const data = await response.json();
         console.log(data)
         const randomRecipe = data.recipes[0]; 
 
+
+
         const existingMeal = await MealPlan.findOne({
           where: {
             username: user.username,
-            weekday: req.res.day,
-            mealNum: req.res.mealNum
+            day: date,
+            mealNum: num
           }
         });
         if (existingMeal) {
           // If a meal exists, update its name with randomRecipe.title
           existingMeal.name = randomRecipe.title;
+          existingMeal.id = randomRecipe.id;
+          existingMeal.weekday = dayOfWeek;
           await existingMeal.save();
           console.log('Existing meal updated:', existingMeal);
         } else {
           // If no meal exists, create a new meal object
           const newMeal = await MealPlan.create({
             username: user.username,
-            day: req.res.selectedDay, // Adjust date format as needed
-            weekday: req.res.weekday,
-            mealNum: req.res.mealNum,
+            day: date, // Adjust date format as needed
+            weekday: dayOfWeek,
+            mealNum: num,
             name: randomRecipe.title,
             recipeid: randomRecipe.id
           });
           console.log('New meal created:', newMeal);
         }
-        const existingRecipe = await Recipe.findOne({
-          where: {
-            recipeid: randomRecipe.id
-          }
-        });
-        if (!existingMeal) {
-          const newRecipe = await Recipe.create({
-            recipeid: randomRecipe.id,
-            username: 'placement',
-            recipename: randomRecipe.name,
-            ingredients: randomRecipe.ingredients,
-            recipedesc: randomRecipe.description,
-            instructions: randomRecipe.instructions,
-            time: randomRecipe.time
-          });
-        } 
+        // const existingRecipe = await Recipe.findOne({
+        //   where: {
+        //     recipeid: randomRecipe.id
+        //   }
+        // });
+        // if (!existingMeal) {
+        //   const newRecipe = await Recipe.create({
+        //     recipeid: randomRecipe.id,
+        //     username: 'placement',
+        //     recipename: randomRecipe.title,
+        //     //ingredients: randomRecipe.extendedIngredients,
+        //     ingredients: 'placeholder',
+        //     recipedesc: randomRecipe.summary,
+        //     instructions: randomRecipe.instructions,
+        //     time: randomRecipe.readyInMinutes
+        //   });
+        // } 
       
 
     res.redirect('/calendar')
@@ -298,16 +318,39 @@ router.post('/newMeal/:mealId', async function(req, res, next) {
 });
 
 
-router.post('/deleteMeal/:mealId', async function(req, res, next) {
-  
-
+router.post('/deleteMeal', async function(req, res, next) {
+  const user = req.session.user;
+  const weekDates = getWeekDates();
+  //console.log(mealsByDay)
+  let num = parseInt(req.body.mealType);
+  const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   try {
-    await Meal.findByIdAndDelete(req.body.mealId);
-    res.redirect('/calendar')
+    // Find the meal to delete
+    let date;
+    if (selectedDay[num].length > 0) {
+      const dayIndex = weekDays.indexOf(dayOfWeek);
+      console.log(dayIndex)
+      date = weekDates[dayIndex];
+      const mealToDelete = await MealPlan.findOne({
+        where: { username: user.username, day: date, mealNum: num }
+      });
+      if (mealToDelete) {
+        await mealToDelete.destroy();
+        console.log("meal deleted")
+      }
+    }
+
+    
+
+    
+
+
+    // Delete the meal
+  res.redirect('/calendar')
     //res.render('calendar', {mealsByDay: mealsByDay})
   } catch (error) {
     console.log(error)
-    console.log("meal plan could not be created");
+    console.log("meal could not be deleted");
     // res.redirect("/login");
     //res.locals.msg = "fail";
     res.redirect('/calendar')

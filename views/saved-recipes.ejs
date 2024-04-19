@@ -19,41 +19,34 @@
 <body>
     <%- include('account_header', { admin: user.admin }) %>
 
-
-    <div class="row">
-        <div class="saved-recipes col">
-            <h2>Saved Recipes</h2>
-            <br>
-            <table class="saved-recipes-table">
+    <section id="recipe-details">
+        <div class="container-lg">
+          <div class="p-lg-2 text-center bg-light">
+            <h1>Recipes</h1>
+          </div>  
+          <table class="table table-hover" id="recipestable">
+            <thead>
+              <tr>
+                <th scope="col">Recipe Name</th>
+                <th scope="col">Recipe Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+                <% for (let recipe of recipes) { %>
                 <tr>
-                    <th>Recipe Name</th>
+                  <td><%= recipe.recipename %></td>
+                  <td><a href="/recipe_by_id?ID=<%= recipe.recipeid %>">View Details</a></td>
                 </tr>
-                <tr>
-                    <td>Greek Salad</td>
-                </tr>
-                <tr>
-                    <td>Pad Thai</td>
-                </tr>
-                <tr>
-                    <td>Spam Musubi</td>
-                </tr>
-            </table>
+                
+              <% } %> 
+           
+            </tbody>
+          </table>
+          <%if (!recipes || recipes.length == 0) { %>
+            <p> No recipes to list! </p>
+            <% } %>
         </div>
-        <div class="username-password col">
-            <h2>User Info</h2>
-            <br>
-            <table class="username-password-table">
-                <tr>
-                    <th>Username</th>
-                    <td>miverson</td>
-                </tr>
-                <tr>
-                    <th>Password</th>
-                    <td>****************</td>
-                </tr>
-            </table>
-
-        </div>
-    </div>
+    </section>
 
 </body>
