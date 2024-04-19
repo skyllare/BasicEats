@@ -85,5 +85,29 @@ router.get('/admin', function (req, res, next) {
     res.render('admin', { user: user });
 });
 
+router.post('/create', async function (req, res, next) {
+    const user = req.session.user;
+    try {
+      await Recipe.create(
+        {
+          username: user.username,
+          recipename: req.body.recipename,
+          ingredients: req.body.ingredients,
+          recipedesc: req.body.recipedesc,
+          instructions: req.body.instructions,
+          minutes: req.body.minutes,
+        }
+      )
+      user.recipe_count = user.recipe_count + 1;
+      res.locals.msg = "addrecipe_success";
+      res.redirect('myrecipes');
+      console.log("recipe added");
+
+    } catch (error) {
+      console.log("recipe could not be added");
+      res.locals.msg = "addrecipe_fail";
+      res.redirect('myrecipes');
+    }
+  });
 
 module.exports = router;
