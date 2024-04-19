@@ -16,7 +16,60 @@
 
 <body>
     <%- include('account_header', { admin: user.admin }) %>
-    <h1>TEST</h1>
+    
+    <div class="title">
+        <div class="page">
+            <div class="recipe-content">
+                <h1 class="recipe-title">
+                    <%= recipe.recipename %>
+                </h1>
+
+                <p class="recipedesc"><%- recipe.recipedesc %></p>
+
+                <form action="/delete_userrecipe" method="post">
+                    <button type="submit" name="userrecipe_delete" class="userrecipe_delete" value="<%= recipe.recipeid%>">
+                        Delete Recipe
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card">
+            <div class="row">
+                <div class="col total">
+                    <h3>Total Time:</h3>
+                    <h4>
+                        <%= recipe.minutes %> min
+                    </h4>
+                </div>
+                <div class="col total">
+                    <h3>Servings:</h3>
+                    <h4>
+                        <%= recipe.servings %>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="ingredients">
+            <h3>Ingredients</h3>
+            <%= recipe.ingredients %>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-10">
+            <div class="recipe-steps">
+                <%= recipe.instructions %>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
 
 
 </body>

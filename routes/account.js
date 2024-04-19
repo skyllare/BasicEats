@@ -96,6 +96,7 @@ router.post('/create', async function (req, res, next) {
           recipedesc: req.body.recipedesc,
           instructions: req.body.instructions,
           minutes: req.body.minutes,
+          servings: req.body.servings
         }
       )
       user.recipe_count = user.recipe_count + 1;

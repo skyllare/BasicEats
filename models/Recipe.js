@@ -44,6 +44,10 @@ Recipe.init({
   time: {
     type: DataTypes.INTEGER,
     allowNull: true
+  },
+  servings: {
+    type: DataTypes.INTEGER,
+    allowNull: true
   }
 }, {
   sequelize, 
