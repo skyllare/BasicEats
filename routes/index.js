@@ -188,8 +188,8 @@ router.post('/id_to_database', async function (req, res) {
 
 
 router.get('/saved_recipes', async function (req, res, next) {
-  const user = req.session.user.username;
-  const recipes = await Saved_Recipe.findAll({ where: { username: user } });
+  const user = req.session.user;
+  const recipes = await Saved_Recipe.findAll({ where: { username: user.username } });
 
   res.render("saved-recipes", { user: user, recipes: recipes });
 });
