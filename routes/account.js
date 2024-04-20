@@ -114,15 +114,18 @@ router.post('/create', async function (req, res, next) {
         }
       )
     //   user.recipe_count = user.recipe_count + 1;
+        const recipes = await Recipe.findAll({ where: { username: user.username } });
       res.locals.msg = "addrecipe_success";
-      res.redirect('myrecipes');
+      res.render('myrecipes', {user: user, recipes: recipes} );
       console.log("recipe added");
 
     } catch (error) {
+      const recipes = await Recipe.findAll({ where: { username: user.username } });
       console.log("recipe could not be added");
       res.locals.msg = "addrecipe_fail";
-      res.redirect('myrecipes');
+      res.render('myrecipes', {user: user, recipes: recipes} );
     }
   });
 
+  
 module.exports = router;
