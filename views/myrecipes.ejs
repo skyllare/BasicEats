@@ -19,6 +19,21 @@
 </head>
 
 <body>
+  <% if(locals.msg && locals.msg==="addrecipe_success" ) { %>
+    <div class="alert alert-success alert-dismissible fade show fixed-top" style="opacity: 0.6; padding-bottom: 1px;" role="alert">
+      <p class="" style="font-size: 15px;">Recipe Added</p>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <% }
+  %>
+  <% if(locals.msg && locals.msg==="addrecipe_fail" ) { %>
+    <div class="alert alert-danger alert-dismissible fade show fixed-top" style="opacity: 0.6; padding-bottom: 1px;" role="alert">
+      <p class="" style="font-size: 15px;">Error: Failed to add recipe</p>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <% }
+  %>
+
   <%- include('account_header', { admin: user.admin }) %>
     <section id="recipe-details">
       <div class="container-lg">
