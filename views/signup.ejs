@@ -361,19 +361,7 @@
 
 <body>
   <!--NAVBAR:-->
-  <div class="nav-bar">
-    <a href="/">
-      <img class="logo" src="images/logo.png" alt="" href="/index" />
-    </a>
-    <a href="/login" class="login">LOG IN/ SIGN UP</a>
-    <div class="top-bar">
-      <a href="/recipe-search" class="meal">MEAL</a>
-      <p class="ingredient">INGREDIENT</p>
-      <a href="/calendar" class="meal-plan">MEAL-PLAN</a>
-      <a href="/aboutus" class="about-us">ABOUT US</a>
-      <a href="/view-users" class="account">ACCOUNT</a>
-    </div>
-  </div>
+  <%- include('login_header') %>
   <!--LOG IN FORM:-->
   <div class="container">
     <h2>Sign Up</h2>
