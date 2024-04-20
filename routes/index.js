@@ -224,6 +224,29 @@ router.get("/delete_userrecipe/:recipeid", async function(req, res, next) {
   }
 })
 
+router.get("/delete_savedrecipe", async function (req, res, next) {
+  if (req.session.user) {
+    const ID = req.query.ID;
+    console.log(ID);
+    const username = req.session.user.username
+    console.log(username);
+
+    const recipe = await Saved_Recipe.findRecipe(ID, username);
+    console.log(recipe)
+
+    if (recipe) {
+      await recipe.destroy()
+      console.log("Recipe " + ID + " deleted");
+      const msg = "recipe_deleted";
+      res.redirect(`/account?msg=${msg}`);
+    } else {
+      console.log("Recipe " + ID + " was NOT deleted");
+      const msg = "recipe_deleted_fail";
+      res.redirect(`/account?msg=${msg}`);
+    }
+  }
+})
+
 
 
 module.exports = router;

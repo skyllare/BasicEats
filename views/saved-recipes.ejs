@@ -28,6 +28,7 @@
               <tr>
                 <th scope="col">Recipe Name</th>
                 <th scope="col">Recipe Details</th>
+                <th scope="col">Delete Recipe</th>
               </tr>
             </thead>
             <tbody>
@@ -36,6 +37,7 @@
                 <tr>
                   <td><%= recipe.recipename %></td>
                   <td><a href="/recipe_by_id?ID=<%= recipe.recipeid %>">View Details</a></td>
+                  <td><a href="/delete_savedrecipe?ID=<%= recipe.recipeid %>">Delete</a></td>
                 </tr>
                 
               <% } %> 
