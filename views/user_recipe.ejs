@@ -17,60 +17,59 @@
 
 <body>
     <%- include('account_header', { admin: user.admin }) %>
-    
-    <div class="title">
-        <div class="page">
-            <div class="recipe-content">
-                <h1 class="recipe-title">
-                    <%= recipe.recipename %>
-                </h1>
 
-                <p class="recipedesc"><%- recipe.recipedesc %></p>
+        <div class="title">
+            <div class="page">
+                <div class="recipe-content">
+                    <h1 class="recipe-title">
+                        <%= recipe.recipename %>
+                    </h1>
 
-                <form action="/delete_userrecipe" method="post">
-                    <button type="submit" name="userrecipe_delete" class="userrecipe_delete" value="<%= recipe.recipeid%>">
-                        Delete Recipe
-                    </button>
-                </form>
+                    <p class="recipedesc"><%- recipe.recipedesc %></p>
+                    
+                    <form action="/delete_userrecipe" method="post">
+                        <div class="userrecipe_delete_container">
+                            <button type="submit" name="userrecipe_delete" class="userrecipe_delete" value="<%= recipe.recipeid%>">
+                                Delete Recipe
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="card">
             <div class="row">
-                <div class="col total">
-                    <h3>Total Time:</h3>
-                    <h4>
-                        <%= recipe.time %> minutes
-                    </h4>
+                <div class="card">
+                    <div class="row">
+                        <div class="col total">
+                            <h3>Total Time:</h3>
+                            <h4>
+                                <%= recipe.time %> minutes
+                            </h4>
+                        </div>
+                        <div class="col total">
+                            <h3>Servings:</h3>
+                            <h4>
+                                <%= recipe.servings %>
+                            </h4>
+                        </div>
+                    </div>
                 </div>
-                <div class="col total">
-                    <h3>Servings:</h3>
-                    <h4>
-                        <%= recipe.servings %>
-                    </h4>
+            </div>
+
+            <div class="row">
+                <div class="ingredients">
+                    <h3>Ingredients</h3>
+                    <%-recipe.ingredients.replace( /\n/g, "<br>" ) %>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="recipe-steps">
+                    <h3>Instructions</h3>
+                    <%-recipe.instructions.replace( /\n/g, "<br>" ) %>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="row">
-        <div class="ingredients">
-            <h3>Ingredients</h3>
-            <%= recipe.ingredients %>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-10">
-            <div class="recipe-steps">
-                <%= recipe.instructions %>
-            </div>
-        </div>
-    </div>
-    <br>
-    <br>
-    <br>
-
-
+        <br>
+        <br>
+        <br>
 </body>

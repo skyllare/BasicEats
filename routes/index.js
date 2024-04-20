@@ -204,7 +204,8 @@ router.get('/userrecipe_by_id', async function (req, res) {
   }
   
   const recipeid = req.query.ID;
-  const usermade_recipe = await Recipe.findRecipe(recipeid)
+  const usermade_recipe = await Recipe.findRecipe(recipeid);
+  console.log(usermade_recipe.instructions)
   res.render('user_recipe', { recipe: usermade_recipe, user: user });
 });
 
