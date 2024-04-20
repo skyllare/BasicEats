@@ -17,12 +17,17 @@ router.get('/', async function (req, res, next) {
     if (req.query.msg) {
         res.locals.msg = req.query.msg;
     }
+
+    const recipes = await Recipe.findAll({ where: { username: user.username } });
+    const count = recipes.length;
+    user.recipe_count = count;
+
     res.render("account", { user: user });
 });
 
 router.get('/myrecipes', async function (req, res, next) {
     const user = req.session.user;
-    const recipes = await Recipe.findAll({ where: { username: 'subu' } });
+    const recipes = await Recipe.findAll({ where: { username: user.username } });
     if (req.query.msg) {
         res.locals.msg = req.query.msg;
     }
@@ -77,12 +82,21 @@ router.get('/saved-recipes', function (req, res, next) {
     res.render('saved-recipes', { user: user });
 });
 
-router.get('/admin', function (req, res, next) {
+router.get('/admin', async function (req, res, next) {
     const user = req.session.user;
+    const recipes = await Recipe.findAll();
     if (req.query.msg) {
         res.locals.msg = req.query.msg
     }
-    res.render('admin', { user: user });
+
+    console.log(user)
+
+    // If user is not logged in, redirect to login page
+    if (!user || user.admin == false) {
+        return res.redirect('/login');
+    }
+
+    res.render('admin', { user: user, recipes:recipes });
 });
 
 router.post('/create', async function (req, res, next) {
@@ -99,7 +113,7 @@ router.post('/create', async function (req, res, next) {
           servings: req.body.servings
         }
       )
-      user.recipe_count = user.recipe_count + 1;
+    //   user.recipe_count = user.recipe_count + 1;
       res.locals.msg = "addrecipe_success";
       res.redirect('myrecipes');
       console.log("recipe added");
