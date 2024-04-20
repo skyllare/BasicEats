@@ -16,17 +16,8 @@ p {
 
 .page {
     display: flex;
-    margin-left: 5%;
+    margin-left: 7%;
     margin-right: 5%;
-}
-
-.recipe-img img {
-    width: 25vw;
-    height: auto;
-}
-
-.recipe-content {
-    margin-left: 5%;
 }
 
 .recipe-title {
@@ -37,49 +28,26 @@ p {
     padding-bottom: 20px;
 }
 
-.recipe-metadata {
-    font-size: 25px;
-}
-
-.recipe-desc {
-    margin-right: 25%;
+.recipedesc {
     font-size: 20px;
     padding-bottom: 40px;
-}
-
-i {
-    display: block;
-}
-
-.recipe_save {
-    display: inline-flex;
-    align-items: center;
-    padding: 6px 14px 6px 12px;
-    border-radius: 4px;
-    border: 3px solid #6f8c69;
-    color: #6f8c69;
-    background: none;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 25px;
 }
 
 button {
     margin-top: 30px;
 }
 
-.recipe-print {
+.userrecipe_delete {
     display: inline-flex;
     align-items: center;
     padding: 6px 14px 6px 12px;
     border-radius: 4px;
-    border: 3px solid #6f8c69;
-    color: #6f8c69;
+    border: 3px solid #f74f4f;
+    color: #f74f4f;
     background: none;
     cursor: pointer;
     font-weight: bold;
     font-size: 25px;
-    margin-top: 2%;
 }
 
 svg {
@@ -109,18 +77,6 @@ svg {
     color: #6f8c69;
 }
 
-li::marker {
-    color: #6f8c69;
-}
-
-.results {
-    margin-left: 4%;
-}
-
-.col-5:nth-child(2) {
-    margin-left: 7%;
-}
-
 .recipe-steps {
     margin-left: 7%;
     font-size: 20px;
@@ -130,14 +86,3 @@ li::marker {
     font-weight: bold;
     color: #6f8c69;
 }
-
-ol {
-    word-wrap: break-word; 
-}
-
-li {
-    padding-left: 10px;
-    padding-bottom: 8px;
-}
-
-
