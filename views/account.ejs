@@ -16,13 +16,30 @@
 </head>
 
 <body>
-    <%- include('account_header', { admin: user.admin }) %>
     <% if(locals.msg && locals.msg==="password_success" ) { %>
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <p class="">Password successfully changed</p>
+        <div class="alert alert-success alert-dismissible fade show fixed-top" style="opacity: 0.6; padding-bottom: 1px;" role="alert">
+            <p class="" style="font-size: 15px;" >Password successfully changed</p>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-    <% } %>
+    <% }
+    %>
+    <% if(locals.msg && locals.msg==="recipe_deleted" ) { %>
+        <div class="alert alert-success alert-dismissible fade show fixed-top" style="opacity: 0.6; padding-bottom: 1px;" role="alert">
+          <p class="" style="font-size: 15px;">Recipe Deleted</p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <% }
+    %>
+    <% if(locals.msg && locals.msg==="recipe_deleted_fail" ) { %>
+        <div class="alert alert-danger alert-dismissible fade show fixed-top" style="opacity: 0.6; padding-bottom: 1px;" role="alert">
+          <p class="" style="font-size: 15px;">Error: Recipe failed to delete</p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <% }
+    %>
+
+    <%- include('account_header', { admin: user.admin }) %>
+
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
