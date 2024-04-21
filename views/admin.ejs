@@ -32,6 +32,7 @@
                             <th scope="col">User</th>
                             <th scope="col">Recipe Title</th>
                             <th scope="col">Recipe Details</th>
+                            <th scope="col">Delete Recipe</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,6 +49,7 @@
                                     <%= recipe.recipename %>
                                 </td>
                                 <td><a href="/userrecipe_by_id?ID=<%= recipe.recipeid %>">View Details</a></td>
+                                <td><a href="/delete_userrecipe?ID=<%= recipe.recipeid %>">Delete</a></td>
                             </tr>
                             <% } %>
                     </tbody>

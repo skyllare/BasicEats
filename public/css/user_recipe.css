@@ -62,7 +62,7 @@ svg {
     font-size: 20px;
 }
 
-.ingredients h3 {
+.ingredients h3, .recipe-steps h3 {
     font-weight: bold;
     color: #6f8c69;
 }
@@ -83,6 +83,7 @@ ol li::marker {
     color: #6f8c69;
 
 }
+
 
 .recipe-steps ol li {
     word-wrap: break-word;

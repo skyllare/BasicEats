@@ -68,7 +68,7 @@ async function setup() {
   ]);
 //',  ', '', 30, 4);
   const saladRecipe = await Recipe.create({ username: 'subu', recipename: "Chicken Gnocchi Soup", ingredients: "3-4 boneless skinless chicken breasts - cooked and diced, 1 stalk of celery - chopped, 1/2 white onion - diced, 2 tsp minced garlic, 1/2 cup shredded carrots, 1 tbsp olive oil, 4 cups low sodium chicken broth, salt and pepper - to taste, 1 tsp thyme, 16 ounces potato gnocchi, 2 cups half and half, 1 cup fresh spinach - roughly chopped ", recipedesc: " Olive Garden Chicken Gnocchi Soup copycat is every bit as creamy and delicious as the restaurant version, made in less than 30 minutes!", instructions: "<ol><li>Heat olive oil in a large pot over medium heat. Add celery, onions, garlic, and carrots and saute for 2-3 minutes until onions are translucent. </li><li>Add chicken, chicken broth, salt, pepper, and thyme, bring to a boil, then gently stir in gnocchi. </li><li>Boil for 3-4 minutes longer before reducing heat to a simmer and cooking for 10 minutes.</li><li>Stir in half and half and spinach and cook another 1-2 minutes until spinach is tender. Taste, add salt and pepper if needed, and serve.</ol>", time: 30, servings: 4 });
-  const savedRecipe = await Saved_Recipe.create({recipeid : 661340, username: 'subu', recipename: 'Spinach Salad with Strawberry Vinaigrette'})
+  const savedRecipe = await Saved_Recipe.create({recipeid : 649933, username: 'subu', recipename: 'Lentil Soup with Chorizo'})
 
   console.log("subu instance created...")
 }
