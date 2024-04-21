@@ -27,13 +27,7 @@
 
                     <p class="recipedesc"><%- recipe.recipedesc %></p>
                     
-                    <form action=<%= "/delete_userrecipe/"+recipe.recipeid %> method="get">
-                        <div class="userrecipe_delete_container">
-                            <button type="submit" name="userrecipe_delete" class="userrecipe_delete" value="<%= recipe.recipeid%>">
-                                Delete Recipe
-                            </button>
-                        </div>
-                    </form>
+                   
                 </div>
             </div>
             <div class="row">

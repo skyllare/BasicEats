@@ -209,18 +209,24 @@ router.get('/userrecipe_by_id', async function (req, res) {
   res.render('user_recipe', { recipe: usermade_recipe, user: user });
 });
 
-router.get("/delete_userrecipe/:recipeid", async function(req, res, next) {
-  const user = req.session.user;
-  const recipe = await Recipe.findRecipe(req.params.recipeid)
-  if(recipe){
-    await recipe.destroy()
-    console.log("Recipe " + req.params.recipeid + " deleted");
-    const msg = "recipe_deleted";
-    res.redirect(`/account?msg=${msg}`);
-  }else{
-    console.log("Recipe " + req.params.recipeid + " was NOT deleted");
-    const msg = "recipe_deleted_fail";
-    res.redirect(`/account?msg=${msg}`);
+router.get("/delete_userrecipe", async function(req, res, next) {
+  if (req.session.user) {
+    const ID = req.query.ID;
+    console.log(ID);
+ 
+    const recipe = await Recipe.findRecipe(ID);
+    console.log(recipe)
+
+    if (recipe) {
+      await recipe.destroy()
+      console.log("Recipe " + ID + " deleted");
+      const msg = "recipe_deleted";
+      res.redirect(`/account?msg=${msg}`);
+    } else {
+      console.log("Recipe " + ID + " was NOT deleted");
+      const msg = "recipe_deleted_fail";
+      res.redirect(`/account?msg=${msg}`);
+    }
   }
 })
 
