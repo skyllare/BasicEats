@@ -190,7 +190,7 @@ router.post('/id_to_database', async function (req, res) {
 router.get('/saved_recipes', async function (req, res, next) {
   const user = req.session.user;
   const recipes = await Saved_Recipe.findAll({ where: { username: user.username } });
-
+  console.log(recipes)
   res.render("saved-recipes", { user: user, recipes: recipes });
 });
 
@@ -205,7 +205,7 @@ router.get('/userrecipe_by_id', async function (req, res) {
   
   const recipeid = req.query.ID;
   const usermade_recipe = await Recipe.findRecipe(recipeid);
-  console.log(usermade_recipe.instructions)
+  console.log(usermade_recipe)
   res.render('user_recipe', { recipe: usermade_recipe, user: user });
 });
 

@@ -109,7 +109,7 @@ router.post('/create', async function (req, res, next) {
           ingredients: req.body.ingredients,
           recipedesc: req.body.recipedesc,
           instructions: req.body.instructions,
-          minutes: req.body.minutes,
+          time: req.body.minutes,
           servings: req.body.servings
         }
       )
