@@ -12,6 +12,9 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link rel="stylesheet" href="./css/calendar.css" />
 
+
+    
+
     <title>Basic Eats</title>
 </head>
 <link rel="stylesheet" href="https://mdbootstrap.com/docs/standard/extended/dropdown-checkbox/#">
@@ -24,7 +27,17 @@
 <body>
     <!--NAVBAR:-->
     <%- include('header.ejs') %>
-
+    <% if(locals.msg && msg==="fail" ) { %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <p class="">The username or password is incorrect</p>
+        </div>
+        <% } else if(locals.msg && msg==="no_recipes" ) { %>
+          <div class="" role="alert">
+            <p class="">Account successfully created. Please sign in</p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <% }
+      %>
         <div class="container">
             <div class="row " style="margin-top:0px; padding-top: 0px;">
                 <!--CALENDAR:-->
@@ -256,8 +269,13 @@
                             <label for="minCalories">Minimum Protein:</label>
                             <input type="number" id="minProtein" name="minProtein" placeholder="Enter minimum protein..." value="0">
                             <br><br>
-                            <br><br>
-                            <button class="generate">Generate Weekly Meals</button>
+                            
+                            <u>Generate Weekly Meals By:</u><br><br>
+                            <button class="generate">Random Recipes</button>
+                        </form>
+                        <br>
+                        <form action="/calendar/generateRecipes" method="POST">
+                            <button class="generate">My Recipes</button>
                         </form>
                         <p style="padding-top:15px">Selected Day: <u><%= dayOfWeek %></u></p>
                         
@@ -271,7 +289,25 @@
                     
                 </div>
             </div>
-            <div class="mealContainer" style="margin-top:10px">
+            <div class="" style="margin-top:10px; display: flex;
+            flex: 1;">
+                <div class="" style="width:30%">
+                    <br>
+                    <p style="display:inline">
+                     
+                       
+                    </p>
+                </div>
+                <div style="justify-content: center; position:absolute; display:flex; width: 30%; position:relative;">
+                    Info
+                </div>
+                <div style="justify-content: center; display:flex; width: 30%; ">
+                    New Recipe</div>
+                <div style="justify-content: center; display:flex; width: 30%; ">
+                    Delete
+                </div>
+            </div>
+            <div class="mealContainer" style="margin-top:5px">
                 <div class="mealType" style="width:30%">
                     <p style="display:inline"><b>Breakfast</b></p>
                     <br>
@@ -285,6 +321,7 @@
                 <div style="justify-content: center; position:absolute; display:flex; width: 30%; position:relative;">
                     <% if (selectedDay && selectedDay[1] && selectedDay[1].length> 0) { %>
                     <a id="dynamicLink1" href="#">Go to Recipe</a>
+                   
                     <% } %>
                 </div>
                 <div style="justify-content: center; display:flex; width: 30%; ">
@@ -381,26 +418,32 @@
 
             // Get the link element by its ID
             var link = document.getElementById('dynamicLink1');
-            
+            <% if (selectedDay[1][0].recipeid > 100) { %>
             // Set the href attribute to the URL with the recipe ID
             link.href = "/recipe_by_id?ID=" + <%= selectedDay[1][0].recipeid %>;
-            <% } %>
+            <% } else { %>
+            link.href = "/userrecipe_by_id?ID=" + <%= selectedDay[1][0].recipeid %>;
+            <% }} %>
             <% if (selectedDay && selectedDay[2] && selectedDay[2].length> 0) { %>
 
             // Get the link element by its ID
             var link = document.getElementById('dynamicLink2');
-
+            <% if (selectedDay[2][0].recipeid > 100) { %>
             // Set the href attribute to the URL with the recipe ID
             link.href = "/recipe_by_id?ID=" + <%= selectedDay[2][0].recipeid %>;
-            <% } %>
+            <% } else { %>
+            link.href = "/userrecipe_by_id?ID=" + <%= selectedDay[2][0].recipeid %>;
+            <% }} %>
             <% if (selectedDay && selectedDay[3] && selectedDay[3].length> 0) { %>
 
             // Get the link element by its ID
             var link = document.getElementById('dynamicLink3');
-
+            <% if (selectedDay[3][0].recipeid > 100) { %>
             // Set the href attribute to the URL with the recipe ID
             link.href = "/recipe_by_id?ID=" + <%= selectedDay[3][0].recipeid %>;
-            <% } %>
+            <% } else { %>
+            link.href = "/userrecipe_by_id?ID=" + <%= selectedDay[3][0].recipeid %>;
+            <% }} %>
         </script>
 </body>
 
