@@ -52,8 +52,18 @@
             <div class="row">
                 <div class="ingredients">
                     <h3>Ingredients</h3>
-                    <%-recipe.ingredients.replace( /\n/g, "<br>" ) %>
+                    <ul>
+                        <% 
+                            const ingredientsArray = recipe.ingredients.split(',').map(ingredient => ingredient.trim());
+                            ingredientsArray.forEach(function(ingredient) { 
+                        %>
+                            <li><%- ingredient %></li>
+                        <% }); %>
+                    </ul>
                 </div>
+                
+                
+                
             </div>
 
             <div class="row">

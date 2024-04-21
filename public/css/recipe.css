@@ -68,20 +68,6 @@ button {
     margin-top: 30px;
 }
 
-.recipe-print {
-    display: inline-flex;
-    align-items: center;
-    padding: 6px 14px 6px 12px;
-    border-radius: 4px;
-    border: 3px solid #6f8c69;
-    color: #6f8c69;
-    background: none;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 25px;
-    margin-top: 2%;
-}
-
 svg {
     margin-right: 6px;
 }
@@ -140,62 +126,3 @@ li {
     padding-bottom: 8px;
 }
 
-.nutrition {
-    margin-left: 7%;
-    margin-top: 3%;
-    font-size: 25px;
-}
-
-.nutrition h3 {
-    font-weight: bold;
-    color: #6f8c69;
-}
-
-.nutrition p {
-    margin-right: 28%;
-}
-
-
-/* Search bar */
-
-.search_bar{
-    display: inline-block;
-    width: 30%;
-}
-#custom-search-input {
-    display: inline-block;
-    padding: 0;
-}
-
-#custom-search-input .search-query {
-    padding-right: 3px;
-    padding-right: 4px \9;
-    padding-left: 3px;
-    padding-left: 4px \9;
-    /* IE7-8 doesn't have border-radius, so don't indent the padding */
-
-    margin-bottom: 0;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-}
-
-#custom-search-input button {
-    border: 0;
-    background: none;
-    /** belows styles are working good */
-    padding: 2px 5px;
-    margin-top: 2px;
-    position: relative;
-    left: -28px;
-    /* IE7-8 doesn't have border-radius, so don't indent the padding */
-    margin-bottom: 0;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    color:#6f8c69;
-}
-
-.search-query:focus + button {
-    z-index: 3;   
-}
