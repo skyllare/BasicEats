@@ -18,7 +18,7 @@ npm install
 Create  a profile for Spoonacular API to get an API key. 
 [Spoonacular Sign Up](https://spoonacular.com/food-api/console#Dashboard)
 
-Create a file named "config.js" in routes file and copy paste this code into it. Paste your Soonacular API key.
+Create a file named "config.js" in routes file and copy paste this code into it. Paste your Spoonacular API key.
 ```javascript
 const MY_API_KEY = 'your key here';
 module.exports = { MY_API_KEY};
