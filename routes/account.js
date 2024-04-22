@@ -46,12 +46,19 @@ router.get('/change_password', async function (req, res, next) {
 
 router.post('/change_password', async function (req, res, next) {
     const user = req.session.user;
-    const password = req.body.password;
+    const new_password = req.body.password;
     const confirmPassword = req.body.confirmPassword;
     if (user !== null) {
-        if (password === confirmPassword) {
+        if (new_password === confirmPassword) {
             try {
-                user.password = password;
+                const findUser= await User.findOne({
+                    where: {
+                      username: user.username
+                    }
+                  });
+                findUser.password= new_password;
+                await findUser.save(); 
+                user.password = new_password;
                 console.log("Password changed successfully");
                 res.locals.msg = "password_success";
                 console.log(user)
